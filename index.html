@@ -30,7 +30,7 @@
   --up:#5fd0bc; --down:#f08b8b; color-scheme:dark}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17.5px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 img{max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
@@ -63,7 +63,7 @@ main .wrap{padding-block:28px 96px;display:grid;gap:28px}
 /* morning summary */
 .brief{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 24px;display:grid;gap:8px}
 .brief .label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.brief p{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.6;max-width:72ch}
+.brief p{margin:0;font-family:var(--serif);font-size:1.2rem;line-height:1.6;max-width:72ch}
 .brief .more{justify-self:start;background:none;border:0;padding:0;color:var(--accent);font-weight:600;font-size:.88rem}
 
 /* story cards */
@@ -75,8 +75,8 @@ main .wrap{padding-block:28px 96px;display:grid;gap:28px}
 .media{position:relative;aspect-ratio:16/10;background:color-mix(in srgb,var(--tc) 14%,var(--surface));overflow:hidden;display:block;max-width:100%}
 .card.lead .media{aspect-ratio:auto;min-height:100%}
 .card.lead .sheet{aspect-ratio:1/1;width:min(70%,360px)}
-.media img{width:100%;height:100%;object-fit:cover;display:block}
-.media .tag{position:absolute;left:14px;top:14px;background:var(--tc);color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;font-weight:500}
+.media img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.media .tag{position:absolute;z-index:2;left:14px;top:14px;background:var(--tc);color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;font-weight:500}
 @media (prefers-color-scheme: dark){.media .tag{color:#111}}
 /* paper-cover fallback when no image */
 .cover{position:absolute;inset:0;display:grid;place-items:center;padding:22px;background:
@@ -92,14 +92,14 @@ main .wrap{padding-block:28px 96px;display:grid;gap:28px}
 .card.lead .body{padding:28px 30px}
 .kicker{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tc);font-weight:500}
 .kicker .n{color:var(--muted)}
-.card h2{margin:0;font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.22;letter-spacing:-.005em;text-wrap:balance}
+.card h2{margin:0;font-family:var(--serif);font-weight:600;font-size:1.42rem;line-height:1.22;letter-spacing:-.005em;text-wrap:balance}
 .card.lead h2{font-size:clamp(1.5rem,2.8vw,2.05rem)}
 .card h2 a{text-decoration:none}
 .card h2 a:hover{color:var(--tc)}
-.src{font-size:.86rem;color:var(--muted)}
-.sum{margin:0;font-size:1rem;line-height:1.65}
-.card.lead .sum{font-size:1.06rem}
-.why{margin:0;font-size:.93rem;line-height:1.55;padding:11px 14px;border-radius:10px;background:color-mix(in srgb,var(--tc) 10%,var(--surface))}
+.src{font-size:.92rem;color:var(--muted)}
+.sum{margin:0;font-size:1.05rem;line-height:1.65}
+.card.lead .sum{font-size:1.12rem}
+.why{margin:0;font-size:1rem;line-height:1.55;padding:11px 14px;border-radius:10px;background:color-mix(in srgb,var(--tc) 10%,var(--surface))}
 .why b{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tc);font-weight:500;margin-bottom:2px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:6px}
 .go{display:inline-flex;align-items:center;gap:6px;background:var(--tc);color:#fff;text-decoration:none;font-weight:600;font-size:.88rem;border-radius:999px;padding:8px 16px}
