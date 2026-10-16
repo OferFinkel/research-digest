@@ -1,0 +1,118 @@
+{
+ "briefing": "Hey Ofer, good morning. It's Friday, October sixteenth, and here's what's worth your attention today. Since this is the very first edition, I went back a few months. Three things.\n\nFirst one's right up your street. A group at Michigan figured out how to print a concrete vault with no scaffolding at all. The trick is simple: every time they print a new layer that hangs out over the edge, they lay a little zig-zag filament on top and tie it back into the layers below. Without it, the layer just peels off at the root. They printed a full barrel vault, about one point two metres across, and it held. The nice part is the design rules are basic formulas, so you could actually try them with earth.\n\nSecond, print monitoring. There's a new preprint that uses a U-Net style network to spot surface defects while the print is running, and here's the interesting bit: they tested it on soil-based mixes, not just concrete. It's not peer reviewed yet, but it's a ready-made baseline to put next to your own deformation model.\n\nAnd third, something for the robot side. Universal Robots just launched a new platform built for physical AI, and NVIDIA updated its robotics toolkit so AI agents can talk to ROS directly. Put those together and you've got a pretty short path from camera says something's wrong to robot actually fixes it.\n\nThat's the top three. There are seven more on the dashboard, plus a few conferences coming up. Have a good one.",
+ "date": "2026-10-16",
+ "edition": 1,
+ "generatedAt": "2026-10-16T17:05:00+03:00",
+ "items": [
+  {
+   "id": "2026-10-16-01",
+   "published": "Aug 2026",
+   "source": "ACADIA 2026 paper · U. Michigan (Kamhawi, Aghaei Meibodi, Capecelatro)",
+   "summary": "A zig-zag secondary filament ties each cantilevering layer back to earlier material, stopping root delamination. A full-scale barrel vault (1.2 m span) printed without scaffold; the primary-only version peeled after three filaments.",
+   "title": "From Tile to Filament: A Cohesive Lamination Method for Scaffold-Free 3D Concrete Printed Vaults",
+   "topic": "form",
+   "url": "https://dartlab.umich.edu/wp-content/uploads/2026/08/2026_Acadia_From-Tile-to-Filament_-A-Cohesive-Lamination-Method-for-Scaffold-Free-3D-Concrete-Printed-Vaults.pdf",
+   "why": "Direct analogue to your non-planar vault printing; the closed-form tie-back checks could be tested on earth mixes and fed by your deformation detector."
+  },
+  {
+   "id": "2026-10-16-02",
+   "published": "Jul 2026",
+   "source": "Preprints.org (Ben Ali, Arbi, Madhbouh) · not peer-reviewed",
+   "summary": "A U-Net decoder on a VGG19 encoder segments surface defects in extrusion printing of concrete and soil-based materials in real time. Augmentation improves on a non-augmented baseline.",
+   "title": "An Intelligent Deep Learning-Based Monitoring Framework for Additive Manufacture",
+   "topic": "monitoring",
+   "url": "https://www.preprints.org/manuscript/202607.1890",
+   "why": "Same task as your CNN for print-quality control, explicitly including soil-based material; useful as a baseline architecture to compare against."
+  },
+  {
+   "id": "2026-10-16-03",
+   "published": "May 2026",
+   "source": "Infrastructures (MDPI), via Fabbaloo",
+   "summary": "Surveys sensors (RGB at the nozzle, depth, structured light, thermal, acoustic) and models from classical image processing to deep learning. Finds small datasets and weak links between detected defects and mechanical performance.",
+   "title": "Review: computer vision and machine learning for defect detection in 3D-printed cementitious materials",
+   "topic": "monitoring",
+   "url": "https://www.fabbaloo.com/?p=237214",
+   "why": "Maps the gaps your work can fill: linking detected layer deformation to structural behaviour of vaults is exactly what the review says is missing.",
+   "imageUrl": "https://www.fabbaloo.com/wp-content/uploads/2026/05/3dcp-quality-visualization-cover.jpg"
+  },
+  {
+   "id": "2026-10-16-04",
+   "published": "Sep 2026",
+   "source": "Robotics 24/7 · September 2026 recap",
+   "summary": "UR unveiled its Gen 7 platform for physical-AI deployment at IMTS 2026. Isaac ROS 5.0 adds AI-agent capabilities to the ROS ecosystem.",
+   "title": "Universal Robots Gen 7 and NVIDIA Isaac ROS 5.0 bring agentic and physical AI to industrial arms",
+   "topic": "ai",
+   "url": "https://www.robotics247.com/podcast/september-2026-robotics-recap/cognex",
+   "why": "You print with UR arms; these are the most direct routes to closing your camera-to-robot loop with off-the-shelf tooling.",
+   "imageUrl": "https://www.robotics247.com/images/2026_article/Robotics-Recap-podcast-black-main-Robotics247-2026.jpg"
+  },
+  {
+   "id": "2026-10-16-05",
+   "published": "Sep 4, 2026",
+   "source": "Construction Dive",
+   "summary": "Caterpillar will combine its jobsite data with FieldAI's foundation models for autonomous machines. First uses: autonomous inspection, site digital twins, situational awareness.",
+   "title": "Caterpillar and FieldAI partner to run construction equipment with robot foundation models",
+   "topic": "ai",
+   "url": "https://constructiondive.com/news/caterpillar-partners-fieldai-equipment-automation/829708",
+   "why": "A signal that physical AI is reaching construction sites, the context in which your on-site earth printing would eventually operate.",
+   "imageUrl": "https://imgproxy.divecdn.com/VUf7jTniKBMgURT7jH6wPSRuxDPgj2KoJa5FZguuVb4/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9DYXRlcnBpbGxhci1hbmQtRmllbGRBSS1Kb2JzaXRlLVYyLmpwZw==.webp"
+  },
+  {
+   "id": "2026-10-16-06",
+   "published": "Aug 6, 2026",
+   "source": "Northeastern Global News · with SLAC, DOE-funded",
+   "summary": "An LLM-based agent commanded a diffractometer, analysed patterns, aligned a crystal and recovered from a motor glitch in a simulated SLAC run. No custom model training was needed.",
+   "title": "An AI scientist sets up and runs an X-ray experiment with little human help",
+   "topic": "labs",
+   "url": "https://news.northeastern.edu/2026/08/06/ai-scientist-x-ray-experiment/",
+   "why": "Shows an off-the-shelf model closing an instrument loop with error recovery; a template for an agent that adjusts print parameters between layers.",
+   "imageUrl": "https://news.northeastern.edu/wp-content/uploads/2026/08/AI-X-ray-Scientist-1400x933-1.jpg"
+  },
+  {
+   "id": "2026-10-16-07",
+   "published": "Exhibited Oct 2025 – Mar 2026",
+   "source": "TUM Professorship of Digital Fabrication",
+   "summary": "Robotic arms bind loose mineral aggregate with a plastic earth mix and compact it into structural blocks without cement or firing. A wall section was shown at the Pinakothek der Moderne.",
+   "title": "Terra Firma: robotic earth printing into load-bearing, unfired blocks",
+   "topic": "printing",
+   "url": "https://www.arc.ed.tum.de/en/df/exhibitions/terra-firma/",
+   "why": "A cement-free earth process at structural scale; a reference point for material choices in your humanitarian-construction vision.",
+   "imageUrl": "https://www.arc.ed.tum.de/fileadmin/_processed_/c/d/csm_CIC_room3_1_gutjahr_small_541d41612a.jpeg"
+  },
+  {
+   "id": "2026-10-16-08",
+   "published": "May 22, 2026",
+   "source": "ArchDaily · book by Philip F. Yuan and Ding Wen Bao (ORO Editions)",
+   "summary": "Documents a studio combining 3D graphic statics and BESO optimisation with robotic concrete printing, ending in a large-scale pavilion.",
+   "title": "Intelligent Force Printing: robotic concrete printing guided by 3D graphic statics",
+   "topic": "printing",
+   "url": "https://www.archdaily.com/1041772/intelligent-force-printing",
+   "why": "Force-driven form finding plus robotic printing is the same pipeline as your funicular work, at pavilion scale.",
+   "imageUrl": "https://images.adsttc.com/media/images/6a10/30a8/35eb/2400/01f0/433c/large_jpg/grid.jpg?1779445933"
+  },
+  {
+   "id": "2026-10-16-09",
+   "published": "Aug 4, 2026",
+   "source": "The Bridge (Japan)",
+   "summary": "Polyuse raised unsecured debt from Mizuho Bank and Shoko Chukin Bank. The money goes to developing and selling its printer.",
+   "title": "Polyuse secures ¥1.1 billion credit line to scale its Polyuse One construction printer",
+   "topic": "business",
+   "url": "https://thebridge.jp/en/2026/08/development-of-construction-3d-printer-polyuse-one-secures-%C2%A51-1-billion-credit-line",
+   "why": "Banks lending without collateral to a printer maker is a maturity signal for the market a spin-off from your work would enter.",
+   "imageUrl": "https://i0.wp.com/thebridge.jp/en/wp-content/uploads/2026/08/Polyuse.png?fit=1200%2C800&ssl=1"
+  },
+  {
+   "id": "2026-10-16-10",
+   "published": "Jul 16, 2026",
+   "source": "Signalbase · Finland",
+   "summary": "The Finnish company raised about €6.4M from the EIC Fund, Course Corrected and RE Ventures. It prints structural concrete parts in local microfactories.",
+   "title": "Hyperion Robotics raises a Series A for 3D-printing microfactories",
+   "topic": "business",
+   "url": "https://www.trysignalbase.com/news/funding/hyperion-robotics-raises-73m-series-a-funding",
+   "why": "The EIC Fund backing construction printing points to a European funding route relevant to EU work such as AM2PM.",
+   "imageUrl": "https://www.trysignalbase.com/_next/image?url=https%3A%2F%2Fimages.trysignalbase.com%2FHyperion%20Robotics.png&w=3840&q=75"
+  }
+ ],
+ "note": "First edition. Since there is no history yet, this one reaches back a few months instead of 24 hours.",
+ "id": "2026-10-16"
+}

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ofer's Research and Business Digest</title>
+<meta name="description" content="Daily digest: robotic earth and concrete printing, funicular shells, print monitoring, self-driving labs, physical AI, funding and events.">
+<meta name="theme-color" content="#f5f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121514" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M6 54 Q32 -4 58 54' fill='none' stroke='%23a4552c' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M4 56h56' stroke='%23171b1a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a morning paper. Masthead with edition stamp, lead story, then a two-column story grid; events and archive as their own sections. */
+:root{
+  --bg:#f5f6f3; --surface:#ffffff; --ink:#171b1a; --muted:#5d6764; --line:#dde2df; --soft:#eceee9;
+  --accent:#a4552c;
+  --t-printing:#a4552c; --t-form:#4a4fb3; --t-monitoring:#13806f; --t-labs:#7c46a8; --t-ai:#2266b8; --t-business:#9a6a00; --t-events:#b23a63;
+  --up:#13806f; --down:#b23a3a;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#121514; --surface:#1a1f1d; --ink:#e7ecea; --muted:#9aa7a2; --line:#2b3330; --soft:#202624;
+  --accent:#e59a72;
+  --t-printing:#e59a72; --t-form:#9ea3f5; --t-monitoring:#5fd0bc; --t-labs:#c79bef; --t-ai:#7fb4f2; --t-business:#e2b94e; --t-events:#f08bb0;
+  --up:#5fd0bc; --down:#f08b8b; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--line);background:var(--bg)}
+.mast .wrap{display:grid;gap:6px;padding-block:22px 0}
+.mast-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.brand{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4.6vw,3.1rem);line-height:1.05;letter-spacing:-.02em;margin:4px 0 2px;text-wrap:balance}
+.brand span{color:var(--accent)}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav button{background:none;border:0;border-bottom:3px solid transparent;padding:12px 14px 11px;font-weight:600;font-size:.92rem;color:var(--muted);white-space:nowrap}
+nav button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+main .wrap{padding-block:28px 96px;display:grid;gap:28px}
+
+/* edition header */
+.edition{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.edition h1{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.1;margin:0;font-weight:600;letter-spacing:-.01em}
+.edition .meta{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+.edition .note{color:var(--muted);font-size:.92rem;margin:6px 0 0;max-width:70ch}
+.daynav{display:flex;gap:8px}
+.pill-btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.85rem;font-weight:600}
+.pill-btn:disabled{opacity:.4;cursor:default}
+
+/* morning summary */
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 24px;display:grid;gap:8px}
+.brief .label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.brief p{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.6;max-width:72ch}
+.brief .more{justify-self:start;background:none;border:0;padding:0;color:var(--accent);font-weight:600;font-size:.88rem}
+
+/* story cards */
+.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;list-style:none;margin:0;padding:0}
+.card{--tc:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card[data-topic="printing"]{--tc:var(--t-printing)}.card[data-topic="form"]{--tc:var(--t-form)}.card[data-topic="monitoring"]{--tc:var(--t-monitoring)}
+.card[data-topic="labs"]{--tc:var(--t-labs)}.card[data-topic="ai"]{--tc:var(--t-ai)}.card[data-topic="business"]{--tc:var(--t-business)}.card[data-topic="events"]{--tc:var(--t-events)}
+.card.lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.media{position:relative;aspect-ratio:16/10;background:color-mix(in srgb,var(--tc) 14%,var(--surface));overflow:hidden;display:block;max-width:100%}
+.card.lead .media{aspect-ratio:auto;min-height:100%}
+.card.lead .sheet{aspect-ratio:1/1;width:min(70%,360px)}
+.media img{width:100%;height:100%;object-fit:cover;display:block}
+.media .tag{position:absolute;left:14px;top:14px;background:var(--tc);color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;font-weight:500}
+@media (prefers-color-scheme: dark){.media .tag{color:#111}}
+/* paper-cover fallback when no image */
+.cover{position:absolute;inset:0;display:grid;place-items:center;padding:22px;background:
+  radial-gradient(circle at 85% 15%,color-mix(in srgb,var(--tc) 30%,transparent),transparent 55%),
+  linear-gradient(160deg,color-mix(in srgb,var(--tc) 22%,var(--surface)),color-mix(in srgb,var(--tc) 8%,var(--surface)))}
+.sheet{width:min(78%,340px);aspect-ratio:1/1.3;max-height:88%;background:#fdfdfb;color:#1b1f1e;border-radius:4px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:9% 9% 0;display:flex;flex-direction:column;gap:7px;overflow:hidden;transform:rotate(-2deg)}
+.sheet .k{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tc);font-weight:500}
+.sheet .t{font-family:var(--serif);font-weight:600;font-size:clamp(.72rem,1.6vw,.95rem);line-height:1.22;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.sheet .v{font-size:.58rem;color:#5d6764;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sheet .ln{height:5px;border-radius:2px;background:#e3e6e4}
+.sheet .ln.s{width:70%}
+.body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:11px;min-width:0;flex:1}
+.card.lead .body{padding:28px 30px}
+.kicker{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tc);font-weight:500}
+.kicker .n{color:var(--muted)}
+.card h2{margin:0;font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.22;letter-spacing:-.005em;text-wrap:balance}
+.card.lead h2{font-size:clamp(1.5rem,2.8vw,2.05rem)}
+.card h2 a{text-decoration:none}
+.card h2 a:hover{color:var(--tc)}
+.src{font-size:.86rem;color:var(--muted)}
+.sum{margin:0;font-size:1rem;line-height:1.65}
+.card.lead .sum{font-size:1.06rem}
+.why{margin:0;font-size:.93rem;line-height:1.55;padding:11px 14px;border-radius:10px;background:color-mix(in srgb,var(--tc) 10%,var(--surface))}
+.why b{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tc);font-weight:500;margin-bottom:2px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:6px}
+.go{display:inline-flex;align-items:center;gap:6px;background:var(--tc);color:#fff;text-decoration:none;font-weight:600;font-size:.88rem;border-radius:999px;padding:8px 16px}
+@media (prefers-color-scheme: dark){.go{color:#111}}
+.go:hover{filter:brightness(1.08)}
+.rate{display:inline-flex;gap:6px;margin-left:auto}
+.rate button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 12px;font-size:.82rem;font-weight:600;display:inline-flex;gap:6px;align-items:center;color:var(--muted)}
+.rate button svg{width:14px;height:14px}
+.rate button.on-up{background:color-mix(in srgb,var(--up) 14%,transparent);border-color:var(--up);color:var(--up)}
+.rate button.on-down{background:color-mix(in srgb,var(--down) 14%,transparent);border-color:var(--down);color:var(--down)}
+.notein{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 10px;font:inherit;font-size:.86rem}
+
+/* send-ratings bar */
+.sendbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:12px;align-items:center;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:.9rem;max-width:calc(100vw - 32px)}
+.sendbar a{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:8px 14px;white-space:nowrap}
+@media (prefers-color-scheme: dark){.sendbar a{color:#111}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:.86rem;z-index:21}
+
+/* archive / events / filters */
+.sec-h h1{font-family:var(--serif);font-size:2rem;margin:0;font-weight:600}
+.sec-h p{margin:4px 0 0;color:var(--muted)}
+.search input{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 14px;font:inherit}
+.days{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.days button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 6px;display:grid;grid-template-columns:1fr auto;gap:4px 16px}
+.days button:hover{background:var(--surface)}
+.days .d{font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.days .c{font-family:var(--mono);font-size:.76rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.days .t{grid-column:1/-1;color:var(--muted);font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hits{list-style:none;margin:0;padding:0;display:grid}
+.hit{border-bottom:1px solid var(--line);padding:14px 0;display:grid;gap:4px}
+.hit a{font-family:var(--serif);font-weight:600;font-size:1.08rem;text-decoration:none}
+.hit .m{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.hit button{justify-self:start;background:none;border:0;padding:0;color:var(--accent);font-weight:600;font-size:.86rem}
+.events{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ev{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ev .when{font-family:var(--mono);line-height:1.15;font-variant-numeric:tabular-nums;border-right:1px solid var(--line);padding-right:12px}
+.ev .mo{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--t-events)}
+.ev .dd{font-family:var(--serif);font-size:2.1rem;font-weight:700}
+.ev .yr{font-size:.72rem;color:var(--muted)}
+.ev h3{margin:0;font-family:var(--serif);font-size:1.15rem;line-height:1.25}
+.ev h3 a{text-decoration:none}.ev h3 a:hover{color:var(--t-events)}
+.ev .info{display:grid;gap:6px;min-width:0}
+.ev .s{font-size:.86rem;color:var(--muted)}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 10px;margin:0 6px 4px 0}
+.chip.open{background:color-mix(in srgb,var(--t-business) 18%,transparent);color:var(--t-business)}
+.chip.closed{border:1px solid var(--line);color:var(--muted)}
+.chip.attend{background:color-mix(in srgb,var(--t-monitoring) 15%,transparent);color:var(--t-monitoring)}
+.chip.il{background:var(--ink);color:var(--bg)}
+.prof{display:grid;gap:22px}
+.prof h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:500}
+.topicrow{display:grid;gap:6px;margin-bottom:12px}
+.topicrow b{font-family:var(--serif);font-size:1.08rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tg{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:2px 9px;font-size:.84rem}
+.tg.neg{color:var(--down);border-color:var(--down)}
+.log{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.log li{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;font-size:.92rem}
+.log .d{font-family:var(--mono);font-size:.76rem;color:var(--muted);padding-top:2px}
+.empty{border:1px dashed var(--line);border-radius:14px;padding:28px;color:var(--muted)}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+footer .wrap{padding-block:20px}
+
+@media (max-width:860px){
+  .card.lead{grid-template-columns:1fr}
+  .card.lead .media{aspect-ratio:16/10;min-height:0}
+  .card.lead .body{padding:22px}
+  .stories,.events{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .body{padding:18px}
+  .rate{margin-left:0}
+  .brief{padding:18px}
+  .ev{grid-template-columns:60px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){.card{transition:transform .15s ease,box-shadow .15s ease}.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-top"><span id="clock">&nbsp;</span><span>Robotic fabrication · Earth &amp; concrete · AI</span></div>
+    <div class="brand">Ofer's Research <span>&amp;</span> Business Digest</div>
+  </div>
+</header>
+<nav aria-label="Sections">
+  <div class="wrap">
+    <button data-view="today" aria-current="page">Today</button>
+    <button data-view="archive">Archive</button>
+    <button data-view="events">Events</button>
+    <button data-view="filters">Filters</button>
+  </div>
+</nav>
+<main><div class="wrap" id="view"><div class="empty">Loading today's edition…</div></div></main>
+<footer><div class="wrap">Compiled every morning at 07:00 Israel time by Ofer's research agent. Ratings feed back into what it picks.</div></footer>
+<div class="sendbar" id="sendbar" hidden><span id="sendtxt"></span><a id="sendlink" href="#" target="_blank" rel="noopener">Send to agent</a></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const REPO='OferFinkel/research-digest';
+const TZ='Asia/Jerusalem';
+const TOPICS={printing:'Robotic printing',form:'Shells & vaults',monitoring:'Print monitoring',labs:'Self-driving labs',ai:'AI & physical AI',business:'Business & funding',events:'Events'};
+const S={index:[],cache:{},events:null,profile:null,serverRatings:{},view:'today',sel:null,q:'',all:false};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const get=async p=>{const r=await fetch(p+(p.includes('?')?'&':'?')+'t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return r.json()};
+
+/* time */
+const fmtDay=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+const fmtTime=iso=>{try{return new Date(iso).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:TZ})}catch(e){return''}};
+const todayStr=()=>new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(new Date());
+function tick(){const n=new Date();$('#clock').textContent=n.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:TZ}).toUpperCase()+' · '+n.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:TZ})+' IL'}
+tick();setInterval(tick,30000);
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2200)}
+
+/* ratings: kept in this browser until sent to the agent as a GitHub issue */
+const LS='rd-ratings-v1';
+function loadLocal(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}}
+function saveLocal(o){try{localStorage.setItem(LS,JSON.stringify(o))}catch(e){}}
+let local=loadLocal();
+function ratingOf(id){return local[id]||S.serverRatings[id]||null}
+function unsent(){return Object.entries(local).filter(([,r])=>!r.sent)}
+function updateSendbar(){
+  const u=unsent();const bar=$('#sendbar');
+  if(!u.length){bar.hidden=true;return}
+  bar.hidden=false;$('#sendtxt').textContent=u.length+' new rating'+(u.length>1?'s':'');
+  const payload=u.map(([id,r])=>({itemId:id,value:r.value,note:r.note||'',date:r.date,title:r.title,topic:r.topic,source:r.source,ratedAt:r.ratedAt}));
+  const body='Ratings from the digest site. The daily agent reads and closes this issue.\n\n```json\n'+JSON.stringify(payload,null,1)+'\n```';
+  $('#sendlink').href=`https://github.com/${REPO}/issues/new?title=${encodeURIComponent('ratings '+todayStr())}&labels=ratings&body=${encodeURIComponent(body)}`;
+}
+$('#sendlink').addEventListener('click',()=>{for(const [id] of unsent())local[id].sent=true;saveLocal(local);setTimeout(()=>{updateSendbar();toast('Submit the GitHub page that opened to finish')},300)});
+
+/* helpers */
+const domainOf=u=>{try{return new URL(u).hostname.replace(/^www\d?\./,'')}catch(e){return'source'}};
+const isPaper=it=>/arxiv|\.pdf|doi\.org|springer|sciencedirect|iaarc|zenodo|preprints|mdpi|wiley|tandfonline|ieee|cumincad/i.test(it.url+' '+it.source);
+const ICON_UP='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>';
+const ICON_DN='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l8 8M12 4l-8 8"/></svg>';
+function coverHTML(it){
+  return `<div class="cover" aria-hidden="true"><div class="sheet"><span class="k">${isPaper(it)?'Paper':'Article'} · ${esc(domainOf(it.url))}</span><span class="t">${esc(it.title)}</span><span class="v">${esc(it.source)}</span><span class="ln"></span><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="ln"></span><span class="ln s"></span></div></div>`}
+function mediaHTML(it){
+  const img=it.imageUrl||it.image;
+  return `<a class="media" href="${esc(it.url)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${coverHTML(it)}${img?`<img src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span class="tag">${esc(TOPICS[it.topic]||it.topic)}</span></a>`}
+function cardHTML(it,i,d,lead){
+  const r=ratingOf(it.id),v=r?.value;
+  return `<li class="card${lead?' lead':''}" data-topic="${esc(it.topic)}" data-id="${esc(it.id)}">
+    ${mediaHTML(it)}
+    <div class="body">
+      <div class="kicker"><span class="n">No. ${i+1}</span><span>${esc(TOPICS[it.topic]||it.topic)}</span></div>
+      <h2><a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a></h2>
+      <div class="src">${esc(it.source)}${it.published?' · '+esc(it.published):''}</div>
+      <p class="sum">${esc(it.summary)}</p>
+      <p class="why"><b>Why it matters</b>${esc(it.why)}</p>
+      <div class="actions">
+        <a class="go" href="${esc(it.url)}" target="_blank" rel="noopener">Read at ${esc(domainOf(it.url))} ↗</a>
+        <span class="rate">
+          <button data-r="up" class="${v==='up'?'on-up':''}" aria-pressed="${v==='up'}" title="Relevant">${ICON_UP}Relevant</button>
+          <button data-r="down" class="${v==='down'?'on-down':''}" aria-pressed="${v==='down'}" title="Not relevant">${ICON_DN}Not for me</button>
+        </span>
+      </div>
+      ${v&&local[it.id]?`<input class="notein" id="note-${esc(it.id)}" placeholder="Optional: why? (helps the agent learn)" value="${esc(local[it.id].note||'')}" maxlength="200">`:''}
+    </div></li>`}
+
+/* views */
+function current(){return S.cache[S.sel]}
+function viewToday(){
+  if(!S.index.length)return `<div class="empty"><b>No edition yet.</b> The first one appears after the next 07:00 run.</div>`;
+  const d=current();if(!d)return `<div class="empty">Loading…</div>`;
+  const i=S.index.findIndex(x=>x.id===d.id);
+  const paras=(d.briefing||'').split(/\n+/).filter(Boolean);
+  return `<section class="edition">
+      <div><h1>${esc(fmtDay(d.date))}</h1>
+      <div class="meta">${d.edition>1?'Edition '+d.edition+' · ':''}Compiled ${esc(fmtTime(d.generatedAt))} Israel time · ${d.items.length} stories</div>
+      ${d.note?`<p class="note">${esc(d.note)}</p>`:''}</div>
+      <div class="daynav"><button class="pill-btn" id="older" ${i>=S.index.length-1?'disabled':''}>← Earlier</button><button class="pill-btn" id="newer" ${i<=0?'disabled':''}>Later →</button></div>
+    </section>
+    ${paras.length?`<section class="brief"><span class="label">The short version</span>${paras.map((p,k)=>`<p ${k>1&&!S.briefOpen?'hidden':''}>${esc(p)}</p>`).join('')}${paras.length>2?`<button class="more" id="morebrief">${S.briefOpen?'Show less':'Read the full summary'}</button>`:''}</section>`:''}
+    <ol class="stories">${d.items.map((it,k)=>cardHTML(it,k,d,k===0)).join('')}</ol>`}
+
+async function loadAll(){if(S.all)return;await Promise.all(S.index.map(async x=>{if(!S.cache[x.id])try{S.cache[x.id]=await get('data/digests/'+x.id+'.json')}catch(e){}}));S.all=true}
+function viewArchive(){
+  const q=S.q.trim().toLowerCase();let body;
+  if(q){
+    if(!S.all){loadAll().then(render);body='<div class="empty">Searching…</div>'}
+    else{const hits=[];for(const x of S.index){const d=S.cache[x.id];if(!d)continue;for(const it of d.items){if((it.title+' '+it.summary+' '+it.why+' '+it.source+' '+(TOPICS[it.topic]||'')).toLowerCase().includes(q))hits.push({d,it})}}
+      body=hits.length?`<p class="src">${hits.length} match${hits.length>1?'es':''} for “${esc(S.q)}”</p><ul class="hits">${hits.map(({d,it})=>`<li class="hit"><a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a><span class="m">${esc(fmtDay(d.date))} · ${esc(TOPICS[it.topic]||it.topic)} · ${esc(domainOf(it.url))}</span><button data-open="${esc(d.id)}">Open that edition</button></li>`).join('')}</ul>`:`<div class="empty">Nothing matches “${esc(S.q)}”.</div>`}
+  }else body=S.index.length?`<ul class="days">${S.index.map(x=>`<li><button data-open="${esc(x.id)}"><span class="d">${esc(fmtDay(x.date))}${x.edition>1?' · edition '+x.edition:''}</span><span class="c">${x.count} stories · ${esc(fmtTime(x.generatedAt))}</span><span class="t">${esc(x.headline||'')}</span></button></li>`).join('')}</ul>`:`<div class="empty">Past editions collect here.</div>`;
+  return `<div class="sec-h"><h1>Archive</h1><p>Every edition and every story, searchable.</p></div>
+    <div class="search"><input id="q" type="search" placeholder="Search past stories, e.g. funicular, clay, funding" value="${esc(S.q)}" aria-label="Search the archive"></div>${body}`}
+
+const daysUntil=s=>s?Math.round((new Date(s+'T00:00:00Z')-new Date(todayStr()+'T00:00:00Z'))/864e5):null;
+function viewEvents(){
+  const evs=(S.events?.events||[]).filter(e=>(daysUntil(e.end||e.start)??0)>=0).sort((a,b)=>(a.start||'').localeCompare(b.start||''));
+  const list=evs.length?`<ul class="events">${evs.map(e=>{const dt=new Date((e.start||todayStr())+'T12:00:00Z');const dl=daysUntil(e.deadline);let c='';
+    if(e.deadline&&dl>=0)c+=`<span class="chip open">Deadline ${esc(e.deadline)} · ${dl} day${dl===1?'':'s'} left</span>`;
+    else if(e.deadline)c+=`<span class="chip closed">Submissions closed</span>`;
+    else if(e.kind==='submit')c+=`<span class="chip open">Deadline not announced</span>`;
+    c+=`<span class="chip attend">${e.kind==='submit'?'Submit or attend':'Attend'}</span>`;if(e.israel)c+=`<span class="chip il">Israel</span>`;
+    return `<li class="ev"><div class="when"><div class="mo">${dt.toLocaleDateString('en-GB',{month:'short',timeZone:'UTC'})}</div><div class="dd">${dt.getUTCDate()}</div><div class="yr">${dt.getUTCFullYear()}</div></div>
+      <div class="info"><h3><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a></h3><div class="s">${esc(e.dates||'')} · ${esc(e.location||'')}</div><div>${c}</div>${e.note?`<div class="s">${esc(e.note)}</div>`:''}</div></li>`}).join('')}</ul>`
+    :`<div class="empty">Conferences and talks will be listed here by date.</div>`;
+  return `<div class="sec-h"><h1>Events</h1><p>Conferences to submit to and events worth attending, in Israel and abroad.${S.events?.updatedAt?' Updated '+esc(fmtDay(S.events.updatedAt)):''}</p></div>${list}`}
+
+function viewFilters(){const p=S.profile;if(!p)return `<div class="empty">Loading…</div>`;
+  const all={...S.serverRatings,...local};const rs=Object.values(all);const up=rs.filter(r=>r.value==='up').length;
+  const tags=(a,cls='')=>a&&a.length?`<div class="tags">${a.map(k=>`<span class="tg ${cls}">${esc(k)}</span>`).join('')}</div>`:'<span class="src">None yet</span>';
+  return `<div class="prof"><div class="sec-h"><h1>Filters</h1><p>What the agent looks for. Every Sunday it re-tunes these from your ratings.</p></div>
+    <div class="src">${rs.length} ratings · ${up} relevant · ${rs.length-up} not for me</div>
+    <section><h3>Topics</h3>${(p.topics||[]).map(t=>`<div class="topicrow"><b>${esc(t.label)}</b>${tags(t.keywords)}</div>`).join('')}</section>
+    <section><h3>Boosted</h3>${tags(p.boost)}</section>
+    <section><h3>Muted</h3>${tags(p.mute,'neg')}</section>
+    <section><h3>Sources</h3>${tags(p.sources)}</section>
+    <section><h3>Changes</h3><ul class="log">${(p.changelog||[]).slice().reverse().map(c=>`<li><span class="d">${esc(c.date)}</span><span>${esc(c.change)}</span></li>`).join('')}</ul></section></div>`}
+
+function render(){
+  document.querySelectorAll('nav button').forEach(b=>b.dataset.view===S.view?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'));
+  const f=document.activeElement?.id==='q';
+  $('#view').innerHTML=S.view==='archive'?viewArchive():S.view==='events'?viewEvents():S.view==='filters'?viewFilters():viewToday();
+  if(f){const q=$('#q');q.focus();q.setSelectionRange(q.value.length,q.value.length)}
+  updateSendbar();
+}
+function setView(v){S.view=v;history.replaceState(null,'',v==='today'?(S.sel&&S.sel!==S.index[0]?.id?'?e='+S.sel:location.pathname):'#'+v);render();window.scrollTo(0,0)}
+async function openEdition(id){S.sel=id;S.briefOpen=false;if(!S.cache[id]){render();try{S.cache[id]=await get('data/digests/'+id+'.json')}catch(e){}}setView('today')}
+
+document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-view]');if(b)setView(b.dataset.view)});
+$('#view').addEventListener('click',e=>{
+  const o=e.target.closest('[data-open]');if(o)return openEdition(o.dataset.open);
+  if(e.target.closest('#older')){const i=S.index.findIndex(x=>x.id===S.sel);if(S.index[i+1])openEdition(S.index[i+1].id);return}
+  if(e.target.closest('#newer')){const i=S.index.findIndex(x=>x.id===S.sel);if(S.index[i-1])openEdition(S.index[i-1].id);return}
+  if(e.target.closest('#morebrief')){S.briefOpen=!S.briefOpen;render();return}
+  const rb=e.target.closest('.rate button');if(!rb)return;
+  const id=rb.closest('.card').dataset.id;const d=current();const it=d.items.find(x=>x.id===id);const value=rb.dataset.r;
+  const prev=ratingOf(id);
+  if(prev&&prev.value===value&&local[id]&&!local[id].sent){delete local[id];toast('Rating cleared')}
+  else{local[id]={value,note:local[id]?.note||'',date:d.date,title:it.title,topic:it.topic,source:it.source,ratedAt:new Date().toISOString(),sent:false};toast(value==='up'?'Marked relevant':'Marked not for me')}
+  saveLocal(local);render();
+});
+$('#view').addEventListener('change',e=>{if(!e.target.classList.contains('notein'))return;const id=e.target.id.slice(5);if(local[id]){local[id].note=e.target.value.trim();local[id].sent=false;saveLocal(local);updateSendbar();toast('Note saved')}});
+$('#view').addEventListener('input',e=>{if(e.target.id==='q'){S.q=e.target.value;clearTimeout(render.t);render.t=setTimeout(render,200)}});
+
+(async()=>{
+  const h=location.hash.slice(1);const qs=new URLSearchParams(location.search);
+  try{S.index=await get('data/index.json')}catch(e){S.index=[]}
+  S.sel=qs.get('e')&&S.index.some(x=>x.id===qs.get('e'))?qs.get('e'):S.index[0]?.id;
+  if(S.sel)try{S.cache[S.sel]=await get('data/digests/'+S.sel+'.json')}catch(e){}
+  if(['archive','events','filters'].includes(h))S.view=h;
+  render();
+  const [ev,pr,rt]=await Promise.allSettled([get('data/events.json'),get('data/profile.json'),get('data/ratings.json')]);
+  S.events=ev.value||null;S.profile=pr.value||null;S.serverRatings=rt.value||{};
+  for(const id of Object.keys(local))if(local[id].sent&&S.serverRatings[id])delete local[id];saveLocal(local);
+  render();
+})();
+</script>
+</body>
+</html>

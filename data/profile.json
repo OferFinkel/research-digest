@@ -1,0 +1,119 @@
+{
+ "boost": [],
+ "changelog": [
+  {
+   "change": "Profile created from your spoken brief: six topics, concrete added to robotic printing, physical AI and AI for architects added to topic five, Springer and leading proceedings added as sources. Google Scholar alerts left out.",
+   "date": "2026-10-16"
+  },
+  {
+   "change": "Added a seventh topic, Business & funding: startups, funding rounds, grants and calls, commercialisation and industry news.",
+   "date": "2026-10-16"
+  }
+ ],
+ "mute": [],
+ "sources": [
+  "arXiv (cs.RO, cs.CV, cs.LG, cs.AI)",
+  "Automation in Construction",
+  "Additive Manufacturing",
+  "Construction Robotics (Springer)",
+  "Architectural Intelligence (Springer)",
+  "Engineering Structures",
+  "Construction and Building Materials",
+  "Cement and Concrete Composites",
+  "CumInCAD (eCAADe, ACADIA, CAADRIA, CAAD Futures)",
+  "FABRICATE",
+  "RILEM Digital Concrete",
+  "ISARC",
+  "ICRA / IROS",
+  "CVPR",
+  "Anthropic, OpenAI, Google DeepMind blogs",
+  "Robotics and construction-tech news",
+  "Funding and construction-tech business news (incl. Israel Innovation Authority, EIC)"
+ ],
+ "topics": [
+  {
+   "key": "printing",
+   "keywords": [
+    "robotic additive manufacturing construction",
+    "earth 3D printing",
+    "clay 3D printing",
+    "cob printing",
+    "3D concrete printing",
+    "large-scale extrusion",
+    "non-planar printing"
+   ],
+   "label": "Robotic printing"
+  },
+  {
+   "key": "form",
+   "keywords": [
+    "funicular shell",
+    "vault",
+    "dome",
+    "formwork-free",
+    "scaffold-free",
+    "graphic statics",
+    "thrust network"
+   ],
+   "label": "Shells & vaults"
+  },
+  {
+   "key": "monitoring",
+   "keywords": [
+    "computer vision print monitoring",
+    "layer deformation detection",
+    "defect detection CNN",
+    "in-situ monitoring",
+    "closed-loop fabrication",
+    "real-time robot correction"
+   ],
+   "label": "Print monitoring"
+  },
+  {
+   "key": "labs",
+   "keywords": [
+    "self-driving laboratory",
+    "autonomous experimentation",
+    "AI agent physical experiments",
+    "lab automation"
+   ],
+   "label": "Self-driving labs"
+  },
+  {
+   "key": "ai",
+   "keywords": [
+    "physical AI",
+    "robot foundation model",
+    "AI for architects",
+    "AI for engineers",
+    "embodied AI",
+    "major model releases"
+   ],
+   "label": "AI & physical AI"
+  },
+  {
+   "key": "business",
+   "keywords": [
+    "construction 3D printing startup",
+    "funding round",
+    "grants and calls (Israel Innovation Authority, EU Horizon, EIC)",
+    "commercialisation",
+    "industry partnerships",
+    "construction-tech market"
+   ],
+   "label": "Business & funding"
+  },
+  {
+   "key": "events",
+   "keywords": [
+    "conference",
+    "call for papers",
+    "workshop",
+    "Israel",
+    "Technion events",
+    "meetup"
+   ],
+   "label": "Events"
+  }
+ ]
+}

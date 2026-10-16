@@ -1,0 +1,92 @@
+{
+ "briefing": "Hey Ofer, me again with a quick update for Friday the sixteenth. A few more things came up worth a look.\n\nFirst, a really practical one. A team at RWTH Aachen put a depth camera right on the robot's hand and trained a model to watch the extrusion as it comes out. When it sees something going wrong and staying wrong, like the pump cutting out, it steps in and slows or stops the arm, so you're not just printing air. And they did it without touching the robot controller itself, which is pretty much the exact integration headache you've been dealing with.\n\nSecond, out of Princeton, and the code's open source. They use two simple PID loops with a small depth camera to keep the bead width and height on target, and the camera actually rotates to follow the direction of the toolpath. That matters a lot on curved, non-planar paths like your vaults, and you can just grab the code.\n\nThird, back to earth. A team from Zurich and Mendrisio printed super thin clay shells and then used them as formwork, pouring earth into them on site. They built a full-size outdoor staircase this way, with over a tonne of cast earth. Could be a neat idea for the thicker parts of a vault.\n\nA few quick ones too: Physical Intelligence opened up an API for its robot models, and SLAC started a self-driving lab project. Five more items and the updated events list are on the dashboard. Talk soon.",
+ "date": "2026-10-16",
+ "edition": 2,
+ "generatedAt": "2026-10-16T17:18:12+03:00",
+ "items": [
+  {
+   "id": "2026-10-16-e2-01",
+   "published": "Jun 22, 2026",
+   "source": "ISARC 2026 proceedings · Benz, Nguyen Trong, Chadha, Visonà, Klemt-Albert (RWTH Aachen)",
+   "summary": "An eye-in-hand RGB-D camera and an instance-segmentation model classify extrusion state online, synced with robot controller data. On persistent failure a bounded program override slows or stops the robot, and an induced pump-off was caught and handled.",
+   "title": "Vision-Enabled Supervisory Feedback Loop for Extrusion Failure Mitigation in Robotic Additive Manufacturing",
+   "topic": "monitoring",
+   "url": "https://www.iaarc.org/publications/2026_proceedings_of_the_43rd_isarc_singapore/vision_enabled_supervisory_feedback_loop_for_extrusion_failure_mitigation_in_robotic_additive_manufacturing.html",
+   "why": "Almost exactly your camera-to-robot loop on an industrial arm, without modifying the controller; a template for wiring your CNN deformation detector into KUKA/UR motion."
+  },
+  {
+   "id": "2026-10-16-e2-02",
+   "published": "Mar 27, 2026",
+   "source": "Zenodo preprint + code · Rabiei, Gorse, Moini (Princeton)",
+   "summary": "Two PID loops use a RealSense D405 to correct filament width and height, while the camera rotates to follow the toolpath direction, including curved paths. The open-source Python code rewrites G-code on the fly.",
+   "title": "Vision Alignment Mechanism for Feedback Control in Robotic Additive Manufacturing with Limited Degrees of Freedom",
+   "topic": "monitoring",
+   "url": "https://zenodo.org/records/19261594",
+   "why": "Open, reusable code for keeping the camera aligned with a curving toolpath, a practical problem on your non-planar vault paths."
+  },
+  {
+   "id": "2026-10-16-e2-03",
+   "published": "Jan 2, 2026",
+   "source": "RILEM Spring Convention 2025 (Springer, RILEM Bookseries 66) · Jenny, Cutajar, Chan, Ercan Jenny, Lloret-Fritschi (ZHAW, USI)",
+   "summary": "Robotically printed thin clay shells act as formwork into which poured earth is cast on site. A full-scale outdoor staircase used over a tonne of liquid earth.",
+   "title": "Earth-To-Earth: Ultra-Thin 3D-Printed Clay Formwork for In-Situ Earth-Casting",
+   "topic": "printing",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-032-14170-5_49",
+   "why": "A hybrid print-plus-cast earth system that could complement self-supporting printed vaults, e.g. thin printed skins filled for thicker supports or springings."
+  },
+  {
+   "id": "2026-10-16-e2-04",
+   "published": "Oct 14, 2026",
+   "source": "IndexBox; also CNBC, Law360",
+   "summary": "Baillie Gifford and BlackRock co-led the round, reported at a $1.4B valuation. Funds go to producing the Titan system in Austin, a new R&D centre, and the Olympus space programme.",
+   "title": "ICON raises $200M Series D to scale robotic construction",
+   "topic": "business",
+   "url": "https://www.indexbox.io/blog/icon-raises-200-million-series-d-to-scale-robotic-construction-and-3d-printed-housing/",
+   "why": "The largest construction-printing round this year shows investor appetite for robotic building, relevant to any commercial path for your work."
+  },
+  {
+   "id": "2026-10-16-e2-05",
+   "published": "Jul 8, 2026",
+   "source": "AI in Civil Engineering (Springer), review · Wang, Zhang, Guo, Xu, Zhou et al.",
+   "summary": "Reviews AI across mix design, printing process and structures, framing the move from open-loop printing to a closed-loop cyber-physical system. Names physics-informed models and digital twins as the main open directions.",
+   "title": "AI-powered 3D printed concrete technology: a new paradigm of intelligent construction",
+   "topic": "printing",
+   "url": "https://link.springer.com/article/10.1007/s43503-026-00104-x",
+   "why": "A current open-access map for positioning your closed-loop vision work in a paper introduction or proposal."
+  },
+  {
+   "id": "2026-10-16-e2-06",
+   "published": "Apr 2026",
+   "source": "arXiv 2604.16621 · Lourenço, Alfaro, Moya, Cueto (U. Zaragoza, Arts et Métiers)",
+   "summary": "A GAN with a pre-trained surrogate discriminator generates compression-only shells that favour high membrane factors, including shells with central openings. FEA checks reproduced the main trends but matched the surrogate only roughly.",
+   "title": "Physics-informed, Generative Adversarial Design of Funicular Shells",
+   "topic": "form",
+   "url": "https://arxiv.org/abs/2604.16621",
+   "why": "A learned shortcut for generating funicular forms, worth comparing with thrust-network methods when choosing vault geometries to print."
+  },
+  {
+   "id": "2026-10-16-e2-07",
+   "published": "Oct 14, 2026",
+   "source": "The AI Insider",
+   "summary": "Developers upload robot data, fine-tune a Pi model on hosted compute and run it through a hosted inference gateway. Early users span heavy equipment, manufacturing and dual-arm robots; access is by application.",
+   "title": "Physical Intelligence opens Pi API beta for robot foundation models",
+   "topic": "ai",
+   "url": "https://theaiinsider.tech/2026/10/14/physical-intelligence-opens-pi-api-beta-for-robot-model-training-and-deployment/",
+   "why": "A low-effort way to test whether a robot foundation model can learn corrective motions from your print logs without building training infrastructure.",
+   "imageUrl": "https://theaiinsider.tech/wp-content/uploads/2026/10/Physical-Intelligence-1.png"
+  },
+  {
+   "id": "2026-10-16-e2-08",
+   "published": "Oct 8, 2026",
+   "source": "SLAC news · DOE Office of Science, with Stanford, UChicago, Argonne, Brookhaven, Berkeley Lab",
+   "summary": "AI agents, robots and smart detectors will run X-ray and electron experiments end to end, including self-correcting beams and real-time analysis. Hard-wired safety stays in place, with researchers setting goals.",
+   "title": "SLAC leads SPIRE project to build self-driving photon-science labs",
+   "topic": "labs",
+   "url": "https://www6.slac.stanford.edu/news/2026-10-08-slac-leads-new-project-build-self-driving-laboratory-future",
+   "why": "The same perceive-decide-act loop under safety limits that a self-correcting print cell needs, at national-lab scale.",
+   "imageUrl": "https://www6.slac.stanford.edu/sites/default/files/styles/extra_large_card/public/2026-09/self_driving_instruments_la_final.jpg?h=48fedc64&itok=uQW0c79V"
+  }
+ ],
+ "note": "Second edition today; widened to recent months for research papers since the freshest items went into edition one. SSRN page for a related layer-height control paper could not be opened.",
+ "id": "2026-10-16-e2"
+}

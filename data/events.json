@@ -1,0 +1,66 @@
+{
+ "events": [
+  {
+   "dates": "Workshops 19–21 Oct, conference 22–24 Oct 2026",
+   "end": "2026-10-24",
+   "kind": "attend",
+   "location": "Detroit, USA · Lawrence Technological University",
+   "note": "Next week. The scaffold-free vault paper in today's digest is presented here.",
+   "start": "2026-10-19",
+   "title": "ACADIA 2026 · Humanism Recoded",
+   "url": "https://2026.acadia.org/"
+  },
+  {
+   "dates": "Spring 2027",
+   "deadline": "2026-07-27",
+   "kind": "attend",
+   "location": "Suzhou, China",
+   "note": "Your Kiesler papers target this one.",
+   "start": "2027-03-31",
+   "title": "CAADRIA 2027",
+   "url": "https://www.myhuiban.com/conference/5719"
+  },
+  {
+   "dates": "14–15 May 2027",
+   "deadline": "2026-07-03",
+   "end": "2027-05-15",
+   "kind": "attend",
+   "location": "Barcelona, Spain · IAAC and COAC",
+   "start": "2027-05-14",
+   "title": "FABRICATE 2027",
+   "url": "https://www.archdaily.com/en/1042598/call-for-submissions-fabricate-2027"
+  },
+  {
+   "dates": "23–25 June 2027",
+   "end": "2027-06-25",
+   "kind": "submit",
+   "location": "Catania, Italy",
+   "note": "Concrete and digital fabrication. Abstract deadline not published yet; watching for it.",
+   "start": "2027-06-23",
+   "title": "SynerCrete'27",
+   "url": "https://netzerocompare.com/events/synercrete-27"
+  },
+  {
+   "dates": "29 June – 3 July 2027",
+   "deadline": "2026-09-30",
+   "end": "2027-07-03",
+   "kind": "attend",
+   "location": "Calgary, Canada · University of Calgary",
+   "start": "2027-06-29",
+   "title": "CAAD Futures 2027",
+   "url": "https://2027.caadfutures.org/papers.html"
+  },
+  {
+   "dates": "26 Sep – 1 Oct 2027",
+   "deadline": "2027-03-01",
+   "end": "2027-10-01",
+   "kind": "submit",
+   "location": "Florence, Italy · Fortezza da Basso",
+   "note": "Paper deadline 1 March 2027 per a third-party listing; confirm on 2027.ieee-iros.org. Good venue for the closed-loop vision work.",
+   "start": "2027-09-26",
+   "title": "IROS 2027",
+   "url": "https://www.beri.net/events/iros-2027"
+  }
+ ],
+ "updatedAt": "2026-10-16"
+}
