@@ -264,11 +264,14 @@ const domainOf=u=>{try{return new URL(u).hostname.replace(/^www\d?\./,'')}catch(
 const isPaper=it=>/arxiv|\.pdf|doi\.org|springer|sciencedirect|iaarc|zenodo|preprints|mdpi|wiley|tandfonline|ieee|cumincad/i.test(it.url+' '+it.source);
 const ICON_UP='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>';
 const ICON_DN='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l8 8M12 4l-8 8"/></svg>';
+/* images: load through an image proxy (avoids hotlink blocking), fall back to the original, then to the paper cover */
+const proxied=u=>/^https?:\/\//.test(u)?'https://wsrv.nl/?url='+encodeURIComponent(u)+'&w=1200&we&output=webp&q=80':u;
+function imgFail(el){if(el.dataset.orig&&el.src!==el.dataset.orig&&!el.dataset.tried){el.dataset.tried='1';el.src=el.dataset.orig}else el.remove()}
 function coverHTML(it){
   return `<div class="cover" aria-hidden="true"><div class="sheet"><span class="k">${isPaper(it)?'Paper':'Article'} · ${esc(domainOf(it.url))}</span><span class="t">${esc(it.title)}</span><span class="v">${esc(it.source)}</span><div class="cols"><div><span class="ln"></span><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="ln"></span></div><div><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="ln"></span><span class="ln s"></span></div></div></div></div>`}
 function mediaHTML(it){
   const img=it.imageUrl||it.image;
-  return `<a class="media" href="${esc(it.url)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${coverHTML(it)}${img?`<img src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</a>`}
+  return `<a class="media" href="${esc(it.url)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${coverHTML(it)}${img?`<img src="${esc(proxied(img))}" data-orig="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this)">`:''}</a>`}
 function storyHTML(it,i,d,lead){
   const r=ratingOf(it.id),v=r?.value;
   return `<article class="story${lead?' lead':''}" data-topic="${esc(it.topic)}" data-id="${esc(it.id)}">
