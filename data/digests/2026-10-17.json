@@ -1,0 +1,96 @@
+{
+ "id": "2026-10-17",
+ "date": "2026-10-17",
+ "edition": 1,
+ "generatedAt": "2026-10-17T11:05:00+03:00",
+ "note": "The scheduled 07:00 run did not publish this edition, so it was compiled late morning. Quiet news day: some items reach back a few months.",
+ "briefing": "Morning Ofer, happy Saturday. A quieter news day, so a few of these reach back a bit.\n\nThe one to look at first is VAULT-AI at TUM. D'Acunto and Dörfler's groups are teaming up with robotics and machine-learning people to build self-supporting vaults with mobile robots that actually see the site and understand what the human builders are doing. Pretty much your research triangle: funicular form, robots, and vision in the loop.\n\nSecond, a Penn State team printed a small concrete dome, predicted its failure load with a finite element model, and then broke it. It failed at about a third less load than predicted, and they blame early-age curing and print defects. That gap between printed and predicted is exactly where deformation monitoring earns its keep.\n\nThird, a nice clay paper: they tracked how a printable clay paste stiffens as it dries and how much it shrinks, about fifteen percent in width. Useful numbers for buildability checks on clay layers.\n\nAlso: Origin raised twenty million dollars for a wall-finishing robot with force control. Five more stories below.",
+ "items": [
+  {
+   "topic": "form",
+   "title": "VAULT-AI: self-supporting vaults built by human-robot teams with spatial AI",
+   "source": "TUM Georg Nemetschek Institute · D'Acunto, Dörfler, Leutenegger, Schoellig",
+   "published": "Ongoing project",
+   "url": "https://www.mdsi.tum.de/en/gni/gni-funded-projects/vault-ai/",
+   "imageUrl": "https://www.mdsi.tum.de/fileadmin/_processed_/e/8/csm_VAULT-AI_6c9b2b10a8.webp",
+   "summary": "TUM combines form-finding for self-supporting vaults with mobile robots that perceive the site in 3D and recognise what human builders are doing. Two masonry vault case studies will test whether this cuts scaffolding and improves quality control.",
+   "why": "The same ingredients as your work (funicular form, robotic placement, vision in the loop) in a group worth following and possibly contacting.",
+   "id": "2026-10-17-01"
+  },
+  {
+   "topic": "form",
+   "title": "3D concrete printing, material characterization, capacity prediction, and strength testing of a sub-scale concrete dome",
+   "source": "Frontiers in Built Environment · Park, Memari, Hojati, Duarte et al. (Penn State)",
+   "published": "Jun 2026",
+   "url": "https://www.frontiersin.org/journals/built-environment/articles/10.3389/fbuil.2026.1854031/full",
+   "summary": "The team printed a geopolymer dome, measured material strength, and used a finite element model to predict its failure load. The real dome failed at about a third less load than predicted, which they attribute partly to early-age curing and print defects.",
+   "why": "A clear case of the gap between printed and predicted capacity that your deformation monitoring could help explain for earth domes.",
+   "id": "2026-10-17-02"
+  },
+  {
+   "topic": "printing",
+   "title": "Fresh-state and hardened mechanical characterization of a 3D-printable clay paste",
+   "source": "Open Construction & Building Technology Journal · Rihani, Akhrif, El Jai, Oulkhir",
+   "published": "Oct 1, 2026",
+   "url": "https://www.openconstructionbuildingtechnologyjournal.com/VOLUME/20/ELOCATOR/e18748368499190/FULLTEXT/",
+   "imageUrl": "https://www.openconstructionbuildingtechnologyjournal.com/contents/volumes/V20/e18748368499190/e18748368499190_F1.jpg",
+   "summary": "Drying time dominated every mechanical property of the printed clay, with stiffness and strength rising toward plateaus as peak strain dropped. Printed samples shrank about 15% in width, and infill pattern made no significant difference.",
+   "why": "Drying-dependent stiffness and shrinkage numbers you can plug into buildability checks for clay vault layers.",
+   "id": "2026-10-17-03"
+  },
+  {
+   "topic": "monitoring",
+   "title": "Machine learning-enabled in-situ defect detection in extrusion-based additive manufacturing",
+   "source": "Int. J. of Advanced Manufacturing Technology · Shekh, Parson, Mishra, Sanyal, Vora",
+   "published": "Mar 2026",
+   "url": "https://link.springer.com/article/10.1007/s00170-026-17804-4",
+   "imageUrl": "https://media.springernature.com/m685/springer-static/image/art%3A10.1007%2Fs00170-026-17804-4/MediaObjects/170_2026_17804_Fig1_HTML.png",
+   "summary": "An overhead camera and an image classifier detect good prints and four fault states (bed level, flow rate) in real time on a low-cost printer. The authors find reliability depends mostly on dataset structure and consistent labelling.",
+   "why": "Small-scale, but its lessons on labelling and single-camera blind spots apply directly to building your print-quality dataset.",
+   "id": "2026-10-17-04"
+  },
+  {
+   "topic": "business",
+   "title": "Origin raises $20M for a wall-finishing construction robot",
+   "source": "Business Standard",
+   "published": "Oct 15, 2026",
+   "url": "https://www.business-standard.com/companies/start-ups/construction-robot-startup-origin-raises-20-mn-to-automate-interior-work-126101501678_1.html",
+   "imageUrl": "https://bsmedia.business-standard.com/_media/bs/img/article/2026-10/15/thumb/featurecrop/1200X628/1792084406-7785.jpg",
+   "summary": "Accel and Zacua Ventures co-led the round for Origin, whose OG-1 robot applies compound, sands and primes walls up to about four metres high. It uses real-time force control and is already deployed on New York job sites.",
+   "why": "Investors are backing force-controlled finishing robots on live sites, a signal for any later spin-off from closed-loop printing.",
+   "id": "2026-10-17-05"
+  },
+  {
+   "topic": "printing",
+   "title": "Simulation-based evaluation of lean robotics for construction-scale robotic 3D printing",
+   "source": "Buildings (MDPI) · Brad, Deeb (TU Cluj-Napoca)",
+   "published": "Oct 16, 2026",
+   "url": "https://www.mdpi.com/2075-5309/16/20/4092",
+   "imageUrl": "https://mdpi-res.com/buildings/buildings-16-04092/article_deploy/html/images/buildings-16-04092-g001-550.jpg",
+   "summary": "The paper links computational design to robot execution through a digital thread and measures how many design variants stay printable under robot constraints. A RoboDK cabin case study demonstrates the workflow.",
+   "why": "A framework for checking reachability and printability of design variants before they reach your KUKA or UR cell.",
+   "id": "2026-10-17-06"
+  },
+  {
+   "topic": "ai",
+   "title": "On-demand robotic assembly via differentiable geometric part repair",
+   "source": "arXiv · Schlafly, Schaub, Costa Pais, … Fuge",
+   "published": "Oct 7, 2026",
+   "url": "https://arxiv.org/abs/2610.09777",
+   "summary": "A generative agent turns text prompts into 3D designs, and a gradient-based repair step fixes overlaps and fastening constraints, succeeding on 87% of new prompts. Two UR5e robots then assembled ten of the designs.",
+   "why": "A text-to-design-to-robot pipeline on UR arms, close to an agentic layer you could put above your print planning.",
+   "id": "2026-10-17-07"
+  },
+  {
+   "topic": "ai",
+   "title": "Japan Mobility Show puts physical AI and cross-sector partnerships in focus",
+   "source": "DIGITIMES",
+   "published": "Oct 15, 2026",
+   "url": "https://www.digitimes.com/news/a20261015PD249/physical-ai-2026-toyota-robot-robotics.html",
+   "imageUrl": "https://img.digitimes.com/newsshow/20261015pd249_files/1_2b.jpg",
+   "summary": "Carmakers and startups at the show demonstrated physical AI, from a basketball-playing Toyota robot to an air-ground inspection system. The focus was on robotics partnerships beyond vehicles.",
+   "why": "Background on where large industrial players are steering physical AI, including inspection uses relevant to construction.",
+   "id": "2026-10-17-08"
+  }
+ ]
+}
