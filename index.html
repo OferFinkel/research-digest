@@ -113,6 +113,15 @@ main .wrap{padding-block:22px 110px}
 .brief p{margin:0 0 10px;font-size:.98rem;line-height:1.55;color:var(--ink2)}
 .brief p:first-of-type{font-family:var(--head);font-size:1.12rem;color:var(--ink);font-style:italic}
 .brief .more{background:none;border:0;padding:0;font-family:var(--sans);font-size:.76rem;font-weight:700;color:var(--link)}
+.listen{display:grid;gap:8px;margin:0 0 14px;padding:10px 12px;background:var(--tint);border:1px solid var(--rule);border-radius:4px;font-family:var(--sans)}
+.listen .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.listen .play{display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:var(--paper);border:0;border-radius:3px;padding:7px 13px;font-family:var(--sans);font-size:.8rem;font-weight:700}
+.listen .ghost{background:none;border:1px solid var(--rule);border-radius:3px;padding:6px 10px;font-family:var(--sans);font-size:.76rem;font-weight:600;color:var(--ink)}
+.listen .prog{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:auto}
+.listen select{max-width:100%;min-width:0;flex:1;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:3px;padding:5px 6px;font-family:var(--sans);font-size:.74rem}
+.listen select.rate{flex:0 0 auto}
+.listen .hint{font-size:.7rem;color:var(--muted);line-height:1.4}
+.brief p.speaking{background:color-mix(in srgb,var(--link) 10%,transparent);border-radius:2px}
 .mini{list-style:none;margin:0;padding:0}
 .mini li{padding:10px 0;border-bottom:1px solid var(--rule);display:grid;gap:3px}
 .mini li:first-child{padding-top:0}
@@ -291,6 +300,51 @@ function storyHTML(it,i,d,lead){
     ${v&&local[it.id]?`<input class="notein" id="note-${esc(it.id)}" placeholder="Optional: why? (helps the agent learn)" value="${esc(local[it.id].note||'')}" maxlength="200">`:''}
   </article>`}
 
+
+/* listen: the browser's own speech voices; picks the most natural English voice available on this device */
+const TTS={ok:'speechSynthesis' in window,on:false,paused:false,para:0,seg:0,total:0,done:0,voices:[],
+  voice:(()=>{try{return localStorage.getItem('rd-voice')||''}catch(e){return''}})(),
+  rate:(()=>{try{return parseFloat(localStorage.getItem('rd-rate'))||1}catch(e){return 1}})()};
+function voiceScore(v){const n=v.name;let s=0;
+  if(/natural|neural|online/i.test(n))s+=60; if(/premium/i.test(n))s+=55; if(/enhanced/i.test(n))s+=45; if(/siri/i.test(n))s+=40;
+  if(/^Google/i.test(n))s+=25; if(/en-GB/i.test(v.lang))s+=6; if(/en-US/i.test(v.lang))s+=5; if(!v.localService)s+=3;
+  if(/compact|espeak|zarvox|novelty|bells|bad news|whisper|trinoids|albert|bahh|boing|bubbles|cellos|jester|organ|superstar/i.test(n))s-=100; return s}
+function loadVoices(){if(!TTS.ok)return;TTS.voices=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang)||v.lang==='en').sort((a,b)=>voiceScore(b)-voiceScore(a));
+  if(S.view==='today'&&document.querySelector('.listen select.voice')&&!TTS.on)render()}
+if(TTS.ok){loadVoices();speechSynthesis.addEventListener?.('voiceschanged',loadVoices)}
+function pickVoice(){return TTS.voices.find(v=>v.voiceURI===TTS.voice)||TTS.voices[0]||null}
+function listenHTML(){
+  if(!TTS.ok)return `<div class="listen"><span class="hint">This browser can't read aloud. Try Chrome, Edge or Safari.</span></div>`;
+  const v=pickVoice();
+  return `<div class="listen" aria-label="Listen to the summary"><div class="row">
+      ${TTS.on?`<button class="play" id="tts-pause">${TTS.paused?'▶ Resume':'❚❚ Pause'}</button><button class="ghost" id="tts-stop">Stop</button>`:`<button class="play" id="tts-play">▶ Listen</button>`}
+      <span class="prog">${TTS.on?`${TTS.done}/${TTS.total}`:''}</span></div>
+    <div class="row"><select class="voice" id="tts-voice" aria-label="Voice">${TTS.voices.length?TTS.voices.map(x=>`<option value="${esc(x.voiceURI)}" ${v&&x.voiceURI===v.voiceURI?'selected':''}>${esc(x.name)}</option>`).join(''):'<option>Default voice</option>'}</select>
+      <select class="rate" id="tts-rate" aria-label="Speed">${[0.9,1,1.1,1.25,1.4].map(r=>`<option value="${r}" ${r===TTS.rate?'selected':''}>${r}×</option>`).join('')}</select></div>
+    ${v&&voiceScore(v)<20?`<span class="hint">Tip: Microsoft Edge has the most natural voices. On iPhone, download an Enhanced English voice in Settings › Accessibility › Spoken Content.</span>`:''}
+  </div>`}
+function ttsSentences(){const d=current();const paras=(d?.briefing||'').split(/\n+/).filter(Boolean);
+  const out=[];paras.forEach((p,k)=>(p.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g)||[p]).forEach(t=>{t=t.trim();if(t)out.push({k,t})}));return out}
+function ttsPlay(){if(!TTS.ok)return;speechSynthesis.cancel();const list=ttsSentences();if(!list.length)return;
+  TTS.on=true;TTS.paused=false;TTS.total=list.length;TTS.done=0;TTS.para=list[0].k;TTS.edition=S.sel;const v=pickVoice();
+  list.forEach((x,i)=>{const u=new SpeechSynthesisUtterance(x.t);if(v){u.voice=v;u.lang=v.lang}else u.lang='en-GB';u.rate=TTS.rate;
+    u.onstart=()=>{TTS.done=i+1;if(TTS.para!==x.k){TTS.para=x.k;if(x.k>1)S.briefOpen=true;render()}else updProg()};
+    u.onend=()=>{if(i===list.length-1){TTS.on=false;TTS.paused=false;render()}};
+    u.onerror=e=>{if(e.error!=='interrupted'&&e.error!=='canceled'){TTS.on=false;render();toast('Playback stopped')}};
+    speechSynthesis.speak(u)});
+  render()}
+function updProg(){const p=document.querySelector('.listen .prog');if(p)p.textContent=`${TTS.done}/${TTS.total}`}
+function ttsStop(){if(TTS.ok)speechSynthesis.cancel();TTS.on=false;TTS.paused=false;render()}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#tts-play'))ttsPlay();
+  else if(e.target.closest('#tts-stop'))ttsStop();
+  else if(e.target.closest('#tts-pause')){if(TTS.paused){speechSynthesis.resume();TTS.paused=false}else{speechSynthesis.pause();TTS.paused=true}render()}
+});
+document.addEventListener('change',e=>{
+  if(e.target.id==='tts-voice'){TTS.voice=e.target.value;try{localStorage.setItem('rd-voice',TTS.voice)}catch(_){};if(TTS.on)ttsPlay()}
+  if(e.target.id==='tts-rate'){TTS.rate=parseFloat(e.target.value);try{localStorage.setItem('rd-rate',TTS.rate)}catch(_){};if(TTS.on)ttsPlay()}
+});
+window.addEventListener('pagehide',()=>{try{speechSynthesis.cancel()}catch(e){}});
 /* views */
 function current(){return S.cache[S.sel]}
 function upcomingEvents(n){return (S.events?.events||[]).filter(e=>(daysUntil(e.end||e.start)??0)>=0).sort((a,b)=>(a.start||'').localeCompare(b.start||'')).slice(0,n)}
@@ -307,7 +361,7 @@ function viewToday(){
     <section class="front">
       <div class="leadcol">${storyHTML(lead,0,d,true)}</div>
       <aside class="side">
-        ${paras.length?`<section class="brief"><h3>The Short Version</h3>${paras.map((p,k)=>`<p ${k>1&&!S.briefOpen?'hidden':''}>${esc(p)}</p>`).join('')}${paras.length>2?`<button class="more" id="morebrief">${S.briefOpen?'Show less':'Continue reading →'}</button>`:''}</section>`:''}
+        ${paras.length?`<section class="brief"><h3>The Short Version</h3>${listenHTML()}${paras.map((p,k)=>`<p data-k="${k}" class="${TTS.on&&TTS.para===k?'speaking':''}" ${k>1&&!S.briefOpen&&!(TTS.on&&TTS.para>=k)?'hidden':''}>${esc(p)}</p>`).join('')}${paras.length>2?`<button class="more" id="morebrief">${S.briefOpen?'Show less':'Continue reading →'}</button>`:''}</section>`:''}
         ${evs.length?`<section><h3>Coming Up</h3><ul class="mini">${evs.map(e=>{const dl=daysUntil(e.deadline);return `<li><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><span class="m">${esc(e.dates||e.start)} · ${esc((e.location||'').split('·')[0].trim())}${e.deadline&&dl>=0?` · <span class="dl">deadline in ${dl} days</span>`:''}</span></li>`}).join('')}</ul></section>`:''}
       </aside>
     </section>
@@ -356,7 +410,7 @@ function render(){
   updateSendbar();
 }
 function setView(v){S.view=v;history.replaceState(null,'',v==='today'?(S.sel&&S.sel!==S.index[0]?.id?'?e='+S.sel:location.pathname):'#'+v);render();window.scrollTo(0,0)}
-async function openEdition(id){S.sel=id;S.briefOpen=false;if(!S.cache[id]){render();try{S.cache[id]=await get('data/digests/'+id+'.json')}catch(e){}}setView('today')}
+async function openEdition(id){if(TTS.on&&id!==TTS.edition)ttsStop();S.sel=id;S.briefOpen=false;if(!S.cache[id]){render();try{S.cache[id]=await get('data/digests/'+id+'.json')}catch(e){}}setView('today')}
 
 document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-view]');if(b)setView(b.dataset.view)});
 $('#view').addEventListener('click',e=>{
