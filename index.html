@@ -200,15 +200,55 @@ footer .wrap{padding-block:18px}
 }
 @media (max-width:760px){
   body{font-size:17px}
-  .front{grid-template-columns:1fr}
-  .front>.leadcol{padding-right:0;border-right:0;padding-bottom:22px;border-bottom:1px solid var(--rule)}
-  .front>.side{padding-left:0;padding-top:20px}
-  .grid{grid-template-columns:1fr}
-  .grid>li,.grid>li:nth-child(n){padding:20px 0 22px;border-right:0}
-  .events{grid-template-columns:1fr}
+  /* masthead: compact */
+  .dateline{padding-top:10px;font-size:.7rem}
   .dateline .r{display:none}
-  nav .wrap{justify-content:flex-start}
-  .rate{margin-left:0}
+  .mast{padding:8px 0 10px}
+  .mast .name{font-size:clamp(1.7rem,8.4vw,2.4rem);line-height:1.05}
+  .mast .motto{display:none}
+  /* nav: full-width, thumb-sized tabs */
+  nav .wrap{justify-content:space-between;padding-left:0;padding-right:0}
+  nav button{flex:1;min-height:48px;padding:0 6px;font-size:.84rem}
+  main .wrap{padding-block:16px 120px}
+  /* edition strip: date on top, big Earlier/Later buttons */
+  .strip{flex-direction:column;align-items:stretch;gap:10px;font-size:.8rem}
+  .daynav{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .navbtn{min-height:44px;font-size:.86rem}
+  .note{margin:-4px 0 16px}
+  /* order on phones: summary first, then the lead story, then events */
+  .front{display:flex;flex-direction:column;border-bottom:0;padding-bottom:0}
+  .front>.side{display:contents}
+  .front>.leadcol{order:2;padding:0 0 24px;border-right:0;border-bottom:1px solid var(--rule-strong)}
+  .brief{order:1;margin-bottom:22px;padding:16px;background:var(--tint);border:1px solid var(--rule);border-radius:6px}
+  .brief h3{margin-bottom:12px}
+  .upnext{order:3;padding-top:22px}
+  .brief .more{min-height:44px;font-size:.86rem}
+  /* listen player: large controls */
+  .listen{background:var(--paper);padding:12px}
+  .listen .play{min-height:48px;padding:0 20px;font-size:.92rem;flex:1;justify-content:center}
+  .listen .ghost{min-height:48px;padding:0 16px;font-size:.88rem}
+  .listen select{min-height:44px;font-size:.86rem}
+  /* stories */
+  .grid{grid-template-columns:1fr}
+  .grid>li,.grid>li:nth-child(n){padding:24px 0 26px;border-right:0}
+  .media{aspect-ratio:16/9;margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)))}
+  .lead h2{font-size:1.75rem}
+  .story h2{font-size:1.32rem}
+  .foot{flex-direction:column;align-items:stretch;gap:10px;font-size:.86rem}
+  .foot .go{display:flex;align-items:center;justify-content:center;min-height:46px;border:1.5px solid var(--link);border-radius:4px;font-size:.9rem}
+  .rate{margin-left:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .rate button{min-height:46px;justify-content:center;font-size:.86rem}
+  .rate button svg{width:15px;height:15px}
+  .notein{min-height:44px;font-size:.9rem}
+  .mini li{padding:12px 0}
+  .mini a{font-size:1.06rem}
+  /* archive / events */
+  .events{grid-template-columns:1fr}
+  .days button{min-height:56px}
+  .search input{min-height:48px;font-size:1rem}
+  .hit button{min-height:40px}
+  .sendbar{left:12px;right:12px;transform:none;max-width:none;justify-content:space-between;padding:10px 10px 10px 16px}
+  .sendbar a{min-height:42px;display:flex;align-items:center}
 }
 @media (max-width:480px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
 </style>
@@ -382,7 +422,7 @@ function viewToday(){
       <div class="leadcol">${storyHTML(lead,0,d,true)}</div>
       <aside class="side">
         ${paras.length?`<section class="brief"><h3>The Short Version</h3>${listenHTML()}${paras.map((p,k)=>`<p data-k="${k}" class="${TTS.on&&TTS.para===k?'speaking':''}" ${k>1&&!S.briefOpen&&!(TTS.on&&TTS.para>=k)?'hidden':''}>${esc(p)}</p>`).join('')}${paras.length>2?`<button class="more" id="morebrief">${S.briefOpen?'Show less':'Continue reading →'}</button>`:''}</section>`:''}
-        ${evs.length?`<section><h3>Coming Up</h3><ul class="mini">${evs.map(e=>{const dl=daysUntil(e.deadline);return `<li><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><span class="m">${esc(e.dates||e.start)} · ${esc((e.location||'').split('·')[0].trim())}${e.deadline&&dl>=0?` · <span class="dl">deadline in ${dl} days</span>`:''}</span></li>`}).join('')}</ul></section>`:''}
+        ${evs.length?`<section class="upnext"><h3>Coming Up</h3><ul class="mini">${evs.map(e=>{const dl=daysUntil(e.deadline);return `<li><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><span class="m">${esc(e.dates||e.start)} · ${esc((e.location||'').split('·')[0].trim())}${e.deadline&&dl>=0?` · <span class="dl">deadline in ${dl} days</span>`:''}</span></li>`}).join('')}</ul></section>`:''}
       </aside>
     </section>
     ${rest.length?`<p class="section-label">More stories</p><ol class="grid">${rest.map((it,k)=>`<li>${storyHTML(it,k+1,d,false)}</li>`).join('')}</ol>`:''}`}
