@@ -302,16 +302,36 @@ function storyHTML(it,i,d,lead){
 
 
 /* listen: the browser's own speech voices; picks the most natural English voice available on this device */
-const TTS={ok:'speechSynthesis' in window,on:false,paused:false,para:0,seg:0,total:0,done:0,voices:[],
+const TTS={ok:'speechSynthesis' in window,allVoices:0,onlyMen:false,on:false,paused:false,para:0,seg:0,total:0,done:0,voices:[],
   voice:(()=>{try{return localStorage.getItem('rd-voice')||''}catch(e){return''}})(),
   rate:(()=>{try{return parseFloat(localStorage.getItem('rd-rate'))||1}catch(e){return 1}})()};
+/* male voices: browsers don't report gender, so match known male voice names (Microsoft Edge, Apple, Google) */
+const MALE={andrew:'warm, confident',brian:'casual, approachable',guy:'newsreader',christopher:'deep, authoritative',eric:'calm, steady',
+  roger:'lively',steffan:'measured',davis:'relaxed',jason:'bright',tony:'friendly',brandon:'easygoing',jacob:'clear',ryan:'cheerful',
+  thomas:'crisp',oliver:'composed',alfie:'young',elliot:'soft',ethan:'youthful',noah:'gentle',william:'easygoing',duncan:'warm',
+  ken:'steady',liam:'clear',mitchell:'friendly',connor:'warm',prabhat:'clear',luke:'young',chilemba:'calm',sam:'friendly',wayne:'mature',
+  daniel:'polished',arthur:'mature',gordon:'deep',lee:'calm',aaron:'clear',fred:'classic synth',rishi:'clear',tom:'plain',evan:'casual',
+  nathan:'bright',reed:'smooth',jamie:'friendly',malcolm:'mature',alex:'neutral'};
+const ACCENT={US:'American',GB:'British',AU:'Australian',CA:'Canadian',IE:'Irish',NZ:'New Zealand',IN:'Indian',ZA:'South African',SG:'Singaporean',KE:'Kenyan',NG:'Nigerian',PH:'Filipino',HK:'Hong Kong',TZ:'Tanzanian',SC:'Scottish'};
+const FEMALE=/\b(female|aria|jenny|ava|emma|michelle|ana|sonia|libby|maisie|natasha|clara|emily|molly|neerja|samantha|karen|moira|tessa|fiona|veena|serena|zira|susan|hazel|heera|catherine|linda|kate|nicky|allison|ava|joelle|zoe|martha|stephanie|victoria|jenny|yan|rosa|leah|asilia|imani|ezinne|mia|elizabeth|sara|nancy|amber|ashley|cora|monica|jane|aria)\b/i;
+function voiceFirst(v){return (v.name.replace(/^(Microsoft|Google|Apple)\s+/i,'').split(/[\s(,-]/)[0]||'').toLowerCase()}
+function isMale(v){if(/\bmale\b/i.test(v.name)&&!/female/i.test(v.name))return true;if(FEMALE.test(v.name))return false;return voiceFirst(v) in MALE}
+function voiceLabel(v){const cc=(v.lang.split(/[-_]/)[1]||'').toUpperCase();const acc=ACCENT[cc]||v.lang;const f=voiceFirst(v);
+  const nm=f?f[0].toUpperCase()+f.slice(1):v.name;const ch=MALE[f]||'';const nat=/natural|neural|online/i.test(v.name)?' · natural':(/premium|enhanced/i.test(v.name)?' · enhanced':'');
+  return /^google/i.test(v.name)&&!MALE[f]?`${v.name} · ${acc}`:`${nm} · ${acc}${ch?' · '+ch:''}${nat}`}
 function voiceScore(v){const n=v.name;let s=0;
   if(/natural|neural|online/i.test(n))s+=60; if(/premium/i.test(n))s+=55; if(/enhanced/i.test(n))s+=45; if(/siri/i.test(n))s+=40;
   if(/^Google/i.test(n))s+=25; if(/en-GB/i.test(v.lang))s+=6; if(/en-US/i.test(v.lang))s+=5; if(!v.localService)s+=3;
-  if(/compact|espeak|zarvox|novelty|bells|bad news|whisper|trinoids|albert|bahh|boing|bubbles|cellos|jester|organ|superstar/i.test(n))s-=100; return s}
-function loadVoices(){if(!TTS.ok)return;TTS.voices=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang)||v.lang==='en').sort((a,b)=>voiceScore(b)-voiceScore(a));
-  if(S.view==='today'&&document.querySelector('.listen select.voice')&&!TTS.on)render()}
-if(TTS.ok){loadVoices();speechSynthesis.addEventListener?.('voiceschanged',loadVoices)}
+  if(/andrew|brian|guy|christopher/i.test(n))s+=8;
+  if(/compact|espeak|zarvox|novelty|bells|bad news|whisper|trinoids|albert|bahh|boing|bubbles|cellos|jester|organ|superstar|fred/i.test(n))s-=100; return s}
+function loadVoices(){if(!TTS.ok)return;const all=speechSynthesis.getVoices().filter(v=>/^en([-_]|$)/i.test(v.lang));
+  const men=all.filter(isMale);TTS.allVoices=all.length;TTS.onlyMen=men.length>0;
+  const list=(men.length?men:all).sort((a,b)=>voiceScore(b)-voiceScore(a));
+  const changed=list.length!==TTS.voices.length;TTS.voices=list;
+  if(changed&&S.view==='today'&&document.querySelector('.listen')&&!TTS.on)render()}
+if(TTS.ok){loadVoices();speechSynthesis.addEventListener?.('voiceschanged',loadVoices);
+  /* some browsers (Edge, mobile) fill the list late or never fire the event: keep checking for a while */
+  let tries=0;const t=setInterval(()=>{loadVoices();if(++tries>40)clearInterval(t)},300)}
 function pickVoice(){return TTS.voices.find(v=>v.voiceURI===TTS.voice)||TTS.voices[0]||null}
 function listenHTML(){
   if(!TTS.ok)return `<div class="listen"><span class="hint">This browser can't read aloud. Try Chrome, Edge or Safari.</span></div>`;
@@ -319,9 +339,9 @@ function listenHTML(){
   return `<div class="listen" aria-label="Listen to the summary"><div class="row">
       ${TTS.on?`<button class="play" id="tts-pause">${TTS.paused?'▶ Resume':'❚❚ Pause'}</button><button class="ghost" id="tts-stop">Stop</button>`:`<button class="play" id="tts-play">▶ Listen</button>`}
       <span class="prog">${TTS.on?`${TTS.done}/${TTS.total}`:''}</span></div>
-    <div class="row"><select class="voice" id="tts-voice" aria-label="Voice">${TTS.voices.length?TTS.voices.map(x=>`<option value="${esc(x.voiceURI)}" ${v&&x.voiceURI===v.voiceURI?'selected':''}>${esc(x.name)}</option>`).join(''):'<option>Default voice</option>'}</select>
+    <div class="row"><select class="voice" id="tts-voice" aria-label="Voice">${TTS.voices.length?TTS.voices.map(x=>`<option value="${esc(x.voiceURI)}" ${v&&x.voiceURI===v.voiceURI?'selected':''}>${esc(voiceLabel(x))}</option>`).join(''):'<option>Loading voices…</option>'}</select>
       <select class="rate" id="tts-rate" aria-label="Speed">${[0.9,1,1.1,1.25,1.4].map(r=>`<option value="${r}" ${r===TTS.rate?'selected':''}>${r}×</option>`).join('')}</select></div>
-    ${v&&voiceScore(v)<20?`<span class="hint">Tip: Microsoft Edge has the most natural voices. On iPhone, download an Enhanced English voice in Settings › Accessibility › Spoken Content.</span>`:''}
+    ${TTS.voices.length&&!TTS.onlyMen?`<span class="hint">No male voices found on this device, so all voices are listed. Microsoft Edge on a computer has the widest choice.</span>`:(v&&voiceScore(v)<20?`<span class="hint">Tip: Microsoft Edge on a computer has the most natural voices. On iPhone, download an Enhanced male voice in Settings › Accessibility › Spoken Content › Voices.</span>`:'')}
   </div>`}
 function ttsSentences(){const d=current();const paras=(d?.briefing||'').split(/\n+/).filter(Boolean);
   const out=[];paras.forEach((p,k)=>(p.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g)||[p]).forEach(t=>{t=t.trim();if(t)out.push({k,t})}));return out}
