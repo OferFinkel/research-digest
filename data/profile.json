@@ -1,5 +1,7 @@
 {
- "boost": [],
+ "boost": [
+  "vision-based feedback control for robotic extrusion"
+ ],
  "changelog": [
   {
    "change": "Profile created from your spoken brief: six topics, concrete added to robotic printing, physical AI and AI for architects added to topic five, Springer and leading proceedings added as sources. Google Scholar alerts left out.",
@@ -8,6 +10,10 @@
   {
    "change": "Added a seventh topic, Business & funding: startups, funding rounds, grants and calls, commercialisation and industry news.",
    "date": "2026-10-16"
+  },
+  {
+   "date": "2026-10-18",
+   "change": "First weekly tune-up from 7 ratings (6 relevant, 1 not). Boosted vision-based feedback control for robotic extrusion, since both papers on it were marked relevant. No terms muted: only one item (the SLAC self-driving lab project) was marked not relevant, which is not yet a pattern."
   }
  ],
  "mute": [],

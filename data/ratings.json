@@ -1,1 +1,65 @@
-{}
+{
+ "2026-10-16-e2-05": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "AI-powered 3D printed concrete technology: a new paradigm of intelligent construction",
+  "topic": "printing",
+  "source": "AI in Civil Engineering (Springer), review · Wang, Zhang, Guo, Xu, Zhou et al.",
+  "ratedAt": "2026-10-17T20:44:07.806Z"
+ },
+ "2026-10-16-e2-04": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "ICON raises $200M Series D to scale robotic construction",
+  "topic": "business",
+  "source": "IndexBox; also CNBC, Law360",
+  "ratedAt": "2026-10-17T20:47:20.050Z"
+ },
+ "2026-10-16-e2-03": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "Earth-To-Earth: Ultra-Thin 3D-Printed Clay Formwork for In-Situ Earth-Casting",
+  "topic": "printing",
+  "source": "RILEM Spring Convention 2025 (Springer, RILEM Bookseries 66) · Jenny, Cutajar, Chan, Ercan Jenny, Lloret-Fritschi (ZHAW, USI)",
+  "ratedAt": "2026-10-17T20:48:23.954Z"
+ },
+ "2026-10-16-e2-02": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "Vision Alignment Mechanism for Feedback Control in Robotic Additive Manufacturing with Limited Degrees of Freedom",
+  "topic": "monitoring",
+  "source": "Zenodo preprint + code · Rabiei, Gorse, Moini (Princeton)",
+  "ratedAt": "2026-10-17T20:49:09.181Z"
+ },
+ "2026-10-16-e2-01": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "Vision-Enabled Supervisory Feedback Loop for Extrusion Failure Mitigation in Robotic Additive Manufacturing",
+  "topic": "monitoring",
+  "source": "ISARC 2026 proceedings · Benz, Nguyen Trong, Chadha, Visonà, Klemt-Albert (RWTH Aachen)",
+  "ratedAt": "2026-10-17T20:49:28.346Z"
+ },
+ "2026-10-16-e2-07": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "Physical Intelligence opens Pi API beta for robot foundation models",
+  "topic": "ai",
+  "source": "The AI Insider",
+  "ratedAt": "2026-10-17T20:49:51.804Z"
+ },
+ "2026-10-16-e2-08": {
+  "value": "down",
+  "note": "",
+  "date": "2026-10-16",
+  "title": "SLAC leads SPIRE project to build self-driving photon-science labs",
+  "topic": "labs",
+  "source": "SLAC news · DOE Office of Science, with Stanford, UChicago, Argonne, Brookhaven, Berkeley Lab",
+  "ratedAt": "2026-10-17T20:50:30.496Z"
+ }
+}

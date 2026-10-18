@@ -1,0 +1,62 @@
+{
+ "id": "2026-10-18",
+ "date": "2026-10-18",
+ "edition": 1,
+ "generatedAt": "2026-10-18T07:20:00+03:00",
+ "note": "The scheduled run could not publish this morning, so this edition was compiled a little later by hand.",
+ "briefing": "Morning Ofer, happy Sunday. Short edition today, but the top two are right on your monitoring work.\n\nFirst, Rowan University found a clever way to measure how printed concrete deforms. They run image correlation backwards in time: start from photos of the finished piece and work back through thousands of frames from the print. That gives the whole deformation history, curing included, which is basically ground truth you could use to train or check your CNN.\n\nSecond, a related one from the Sant and Neithalath group. They tracked printed walls with image correlation and found a simple early warning: failure is coming when the displacement stops growing linearly. They could also tell plastic collapse apart from buckling. That's a rule you could put right on top of your detector.\n\nThird, a solid review of soil printing: rheology decides everything, additives help, but results swing a lot with soil type.\n\nOn the money side, Bedrock Robotics is raising six hundred million dollars for autonomous construction machines. Two more stories below.",
+ "items": [
+  {
+   "topic": "monitoring",
+   "title": "Reverse-time image correlation tracks how 3D-printed concrete deforms while it is printed and cured",
+   "source": "Experimental Mechanics · Mantawy, Koohbor et al. (Rowan University)",
+   "published": "Oct 13, 2026",
+   "url": "https://today.rowan.edu/news/2026/10/rowan-engineers-develop-method-for-monitoring-3d-printed-concrete.html",
+   "imageUrl": "https://today.rowan.edu/news/2026/10/images/mantawy_3d_concrete.jpg",
+   "summary": "The team runs digital image correlation backwards in time, starting from images of the finished element and working back through thousands of frames captured during printing. This reconstructs the full deformation history of the printed concrete, including the curing stage.",
+   "why": "A ground-truth method for layer deformation that could label training data for your CNN, or validate its predictions on printed vaults.",
+   "id": "2026-10-18-01"
+  },
+  {
+   "topic": "monitoring",
+   "title": "Deformation-based buildability assessment of 3D-printed concrete and its numerical simulation",
+   "source": "Journal of Building Engineering · Tripathi, Nair, Rajan, Sant, Neithalath",
+   "published": "Apr 2026",
+   "url": "https://doi.org/10.1016/j.jobe.2026.116185",
+   "summary": "Image correlation tracked vertical and out-of-plane displacement of printed walls and flagged impending failure when the response left its initial linear trend. It also separated plastic collapse from buckling, which the finite element model did not capture.",
+   "why": "A concrete early-warning rule (departure from linear displacement) you could implement on top of your deformation detector.",
+   "id": "2026-10-18-02"
+  },
+  {
+   "topic": "printing",
+   "title": "Advancements in 3D soil printing for construction: material development and technological challenges",
+   "source": "Journal of Building Engineering · Nifla, Rajeev, Ferrari, Sanjayan, Gad et al.",
+   "published": "Jun 2026",
+   "url": "https://doi.org/10.1016/j.jobe.2026.116323",
+   "summary": "This review covers extrusion-based soil printing and shows that rheology decides whether a mix can be both extruded and stacked. Additives can cut shrinkage and raise strength, but results vary widely with soil type, and field-scale validation is still missing.",
+   "why": "A current map of earth-printing mixes, useful next to your concrete work when choosing materials for printed vaults.",
+   "id": "2026-10-18-03"
+  },
+  {
+   "topic": "business",
+   "title": "Bedrock Robotics seeks $600M for autonomous construction machines",
+   "source": "Axios Pro",
+   "published": "Oct 13, 2026",
+   "url": "https://www.axios.com/pro/climate-deals/2026/10/13/bedrock-robotics-series-c-600m",
+   "imageUrl": "https://images.axios.com/0udLCzV6aj05EnFd9zKC0n9XaY4=/0x0:1920x1080/1366x768/2025/12/10/1765402115398.jpeg",
+   "summary": "Bedrock, which makes autonomy kits for construction vehicles, is raising a Series C at a reported $3.5 billion pre-money valuation, about double its February figure. Demand comes largely from the data-centre construction backlog.",
+   "why": "Together with ICON and Origin this week, a sign that investors are pouring money into on-site construction autonomy.",
+   "id": "2026-10-18-04"
+  },
+  {
+   "topic": "business",
+   "title": "Stansted raises a seed round for robotic factories that build timber frames from plans",
+   "source": "Bricks & Bytes funding roundup",
+   "published": "Week of Oct 12, 2026",
+   "url": "https://bricks-bytes.com/funding-ma/latest-construction-technology-funding-rounds-12th-oct-2026/",
+   "summary": "The startup turns architectural plans directly into robotically assembled timber wall frames and roof trusses. It raised about 2 million in seed funding.",
+   "why": "Relevant to your timber-plus-printed-earth hybrid idea: the timber half is already being automated.",
+   "id": "2026-10-18-05"
+  }
+ ]
+}
