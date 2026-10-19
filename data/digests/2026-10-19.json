@@ -1,0 +1,64 @@
+{
+ "id": "2026-10-19",
+ "date": "2026-10-19",
+ "edition": 1,
+ "generatedAt": "2026-10-19T07:10:00+03:00",
+ "note": "Quiet weekend for new research; three items reach back a few months and show their original dates.",
+ "briefing": "Morning Ofer. Quiet weekend for new papers, so today's mix leans on a few strong items from the past months.\n\nThe lead is a neat trick from UniSA: a second nozzle lays a flexible fibre-polymer grid between concrete layers as they print. The plates carried about forty percent more load and bent much further before failing. The catch is that the seams with the grid got weaker, so the layer interface is the thing to watch, which is right where your monitoring comes in.\n\nSecond, Google showed AI agents running a wet lab through a live digital twin. Every robot command gets dry-run in the twin first, and anything invalid is blocked before it reaches the hardware. Swap pipettes for an extruder and that's basically the safety layer a closed-loop print controller needs.\n\nThird, some real-world numbers: a three-storey, twelve-apartment building in France was printed in thirty-four days instead of fifty, with half the crew.\n\nTwo more below, including an Israeli robot-learning startup that raised seventy-one million dollars.",
+ "items": [
+  {
+   "topic": "printing",
+   "title": "Printing a reinforcement grid between concrete layers: 41% more load and far more ductility",
+   "source": "UniSA (Prof. Yan Zhuge et al.), via Earth.com",
+   "published": "Mar 2026",
+   "url": "https://www.earth.com/science/scientists-have-succeeded-in-strengthening-3d-printed-concrete-during-the-printing-process/",
+   "imageUrl": "https://www.earth.com/img/16x9/1920/uploads/2026/03/29103606/3d-printed-concrete.jpg",
+   "summary": "A second nozzle lays a flexible fibre-reinforced polymer grid between printed layers, with fibre-rich lower layers and lower-carbon slag mixes above. Reinforced plates carried 41% more load and deflected far more before failure, but seams with the grid lost a third or more of their splitting strength.",
+   "why": "A way to add tensile capacity during printing, relevant to thin printed shells and to the interface weakness your deformation monitoring would need to watch.",
+   "id": "2026-10-19-01"
+  },
+  {
+   "topic": "labs",
+   "title": "Google's wet-lab agents check robot commands against a live digital twin before running them",
+   "source": "Google Research blog",
+   "published": "Oct 16, 2026",
+   "url": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/",
+   "imageUrl": "https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg",
+   "summary": "The VERID framework gives AI agents a live twin of the lab workcell, so they dry-run experiments and invalid robot commands are blocked before execution. Over three design-test cycles the agents raised confirmed hit rates and revised their own design rules from the results.",
+   "why": "The validate-in-a-twin-before-acting pattern is exactly what a closed-loop print controller needs before it changes robot commands mid-print.",
+   "id": "2026-10-19-02"
+  },
+  {
+   "topic": "printing",
+   "title": "Europe's largest 3D-printed apartment building finished three months early",
+   "source": "COBOD · PERI 3D Construction, Plurial Novilia",
+   "published": "Apr 29, 2026",
+   "url": "https://cobod.com/europes-largest-3d-printed-apartment-building-completed-three-months-faster-than-conventional-construction/",
+   "imageUrl": "https://cobod.com/wp-content/uploads/2026/04/peri-3d-construction-x-cobod-villasprin-5-2-1.png",
+   "summary": "A three-storey, 12-apartment social housing block in Bezannes, France was printed in 34 days instead of the planned 50, with three operators instead of six. Curved walls saved about 10% of the concrete and waste fell to around 5%.",
+   "why": "Hard productivity numbers from a real multi-storey job, useful benchmarks for any business case around robotic printing.",
+   "id": "2026-10-19-03"
+  },
+  {
+   "topic": "ai",
+   "title": "Israeli startup Enigma raises a $71M seed round for robot foundation models",
+   "source": "Calcalist (CTech)",
+   "published": "Jul 27, 2026",
+   "url": "https://www.calcalistech.com/ctechnews/article/h1tdxjhrgx",
+   "imageUrl": "https://pic1.calcalist.co.il/picserver3/crop_images/2026/07/27/Hyf47kBrGx/Hyf47kBrGx_0_82_2007_1130_0_large.jpg",
+   "summary": "Founded by former 8200 researchers, Enigma builds foundation models meant to work across different robots with less manually collected physical data. Index Ventures and Ribbit Capital led the round.",
+   "why": "A well-funded Israeli physical-AI team close to home, worth knowing for collaboration or future hiring around robot learning.",
+   "id": "2026-10-19-04"
+  },
+  {
+   "topic": "labs",
+   "title": "Danaher and NVIDIA team up to close the loop between lab instruments and AI",
+   "source": "GEN (Genetic Engineering & Biotechnology News)",
+   "published": "Oct 16, 2026",
+   "url": "https://www.genengnews.com/topics/artificial-intelligence/danaher-nvidia-combine-lab-instrumentation-and-ai-to-advance-autonomous-science/",
+   "summary": "Danaher's instruments and automation software will be combined with NVIDIA computing so experimental data improves AI models, which in turn design the next experiments. Work starts on a few priority instruments before expanding.",
+   "why": "Another sign that instrument makers are building the data-to-model-to-experiment loop, the same loop your printing setup aims for.",
+   "id": "2026-10-19-05"
+  }
+ ]
+}
