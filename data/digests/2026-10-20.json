@@ -1,0 +1,54 @@
+{
+ "id": "2026-10-20",
+ "date": "2026-10-20",
+ "edition": 1,
+ "generatedAt": "2026-10-20T07:05:00+03:00",
+ "note": "Four stories today: little new research appeared since yesterday, and two items reach back a few months with their original dates shown.",
+ "briefing": "Morning Ofer. Short one today, four stories.\n\nThe lead is a fresh review of quality monitoring for printed concrete. It walks through image processing, CNNs and Transformers, and its conclusion is basically your research plan: most sites still rely on someone eyeballing the print, and closed-loop control and robustness in the field are the open problems. Handy for citations and baselines.\n\nSecond, a 55-acre community in Colorado is going to be printed largely by two autonomous RIC Robotics systems, more than 65 homes. That's printing moving from one showcase house to whole neighbourhoods.\n\nThird, Dream Labs raised ninety million dollars for a robot model that takes a camera feed plus a plain-English instruction and spits out motor commands, even for robots it hasn't seen. The claims are the company's own, but it's the same camera-to-command loop you're after.\n\nOne more below: MIT's snap-together voxel robots, with an embodied-carbon comparison against concrete printing.",
+ "items": [
+  {
+   "topic": "monitoring",
+   "title": "Review on quality monitoring methods for 3D-printed concrete",
+   "source": "Buildings (MDPI) · Li, Zhao, Wang",
+   "published": "May 7, 2026",
+   "url": "https://www.mdpi.com/2075-5309/16/10/1852",
+   "imageUrl": "https://pub.mdpi-res.com/buildings/buildings-16-01852/article_deploy/html/images/buildings-16-01852-g001.png?1778140066",
+   "summary": "The review maps image processing, CNN and Transformer-based monitoring of printed concrete, plus CT and SEM inspection of micro-defects. It finds that practice still leans on operator judgment and names closed-loop control, BIM integration and field robustness as the open problems.",
+   "why": "A current map of the field your CNN work sits in, and a good source of baselines and gaps to cite in the vault-monitoring papers.",
+   "id": "2026-10-20-01"
+  },
+  {
+   "topic": "printing",
+   "title": "One of the world's largest 3D-printed communities moves ahead in Colorado",
+   "source": "Building Design + Construction · Cleora, True North, RIC Robotics",
+   "published": "Oct 19, 2026",
+   "url": "https://bdcnetwork.com/aec-tech/3d-printing/article/55412795/one-of-the-worlds-largest-3d-printed-communities-advances-in-colorado",
+   "imageUrl": "https://img.bdcnetwork.com/files/base/ebm/bdcnetwork/image/2026/10/6ad6462342f4e32b46830e1a-cleora_a_55acre_development_in_salida_colo_3_scale.png?auto=format,compress&fit=fill&fill=blur&w=1200&h=630",
+   "summary": "Cleora, a 55-acre development in Salida, will use two autonomous RIC printing systems to build more than 65 of its 106 homes. It also runs as a construction workforce program with Colorado Mountain College over five to seven years.",
+   "why": "Robotic printing moving from single showcase houses to whole neighbourhoods, which is the scale a low-cost housing vision needs.",
+   "id": "2026-10-20-02"
+  },
+  {
+   "topic": "ai",
+   "title": "Dream Labs raises a $90M seed round for a cross-robot foundation model",
+   "source": "Shattered (citing Unite.AI, RuntimeWire, Wing VC)",
+   "published": "Oct 19, 2026",
+   "url": "https://shattered.io/dream-labs-90m-seed-robot-foundation-model-2026/",
+   "imageUrl": "https://shattered.io/wp-content/uploads/2026/10/dream-labs-90m-seed-robot-foundation-model-2026-gen.webp",
+   "summary": "Founded by former NVIDIA robotics researchers, Dream Labs offers an API that takes a robot's camera feed and a plain-English instruction and returns motor commands, even for unseen hardware. B Capital led the round; performance claims are company-reported.",
+   "why": "Another camera-in, robot-commands-out model you could test against your printing arms, though industrial path accuracy is a different bar from household tasks.",
+   "id": "2026-10-20-03"
+  },
+  {
+   "topic": "printing",
+   "title": "Robots that assemble snap-together building blocks cut embodied carbon versus 3D concrete printing",
+   "source": "MIT News · Smith, Richard, Parra Rubio, Gershenfeld (Center for Bits and Atoms)",
+   "published": "Apr 28, 2026",
+   "url": "https://news.mit.edu/2026/robotically-assembled-building-blocks-makes-construction-more-efficient-and-sustainable-0428",
+   "imageUrl": "https://news.mit.edu/sites/default/files/images/202604/MIT-sustain-voxels-01-press.jpg",
+   "summary": "Small MILAbot robots walk over a lattice structure and place self-aligning steel or plywood voxels. Steel voxels came to about a third of the embodied carbon of 3D concrete printing, and on-site assembly took 99 hours versus 155 for existing methods.",
+   "why": "A direct carbon comparison against concrete printing, useful context when you argue for earth and low-carbon printed vaults.",
+   "id": "2026-10-20-04"
+  }
+ ]
+}
