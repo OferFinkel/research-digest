@@ -61,5 +61,50 @@
   "topic": "labs",
   "source": "SLAC news · DOE Office of Science, with Stanford, UChicago, Argonne, Brookhaven, Berkeley Lab",
   "ratedAt": "2026-10-17T20:50:30.496Z"
+ },
+ "2026-10-19-04": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-19",
+  "title": "Israeli startup Enigma raises a $71M seed round for robot foundation models",
+  "topic": "ai",
+  "source": "Calcalist (CTech)",
+  "ratedAt": "2026-10-19T04:30:13.605Z"
+ },
+ "2026-10-20-01": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-20",
+  "title": "Review on quality monitoring methods for 3D-printed concrete",
+  "topic": "monitoring",
+  "source": "Buildings (MDPI) · Li, Zhao, Wang",
+  "ratedAt": "2026-10-20T04:38:37.425Z"
+ },
+ "2026-10-20-02": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-20",
+  "title": "One of the world's largest 3D-printed communities moves ahead in Colorado",
+  "topic": "printing",
+  "source": "Building Design + Construction · Cleora, True North, RIC Robotics",
+  "ratedAt": "2026-10-20T04:38:40.354Z"
+ },
+ "2026-10-20-03": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-20",
+  "title": "Dream Labs raises a $90M seed round for a cross-robot foundation model",
+  "topic": "ai",
+  "source": "Shattered (citing Unite.AI, RuntimeWire, Wing VC)",
+  "ratedAt": "2026-10-20T04:38:41.779Z"
+ },
+ "2026-10-20-04": {
+  "value": "up",
+  "note": "",
+  "date": "2026-10-20",
+  "title": "Robots that assemble snap-together building blocks cut embodied carbon versus 3D concrete printing",
+  "topic": "printing",
+  "source": "MIT News · Smith, Richard, Parra Rubio, Gershenfeld (Center for Bits and Atoms)",
+  "ratedAt": "2026-10-20T04:38:43.305Z"
  }
 }
