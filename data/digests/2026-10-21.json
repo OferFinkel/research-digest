@@ -1,0 +1,74 @@
+{
+ "id": "2026-10-21",
+ "date": "2026-10-21",
+ "edition": 1,
+ "generatedAt": "2026-10-21T07:05:00+03:00",
+ "briefing": "Morning Ofer. Six today, and the physical-AI money keeps flowing.\n\nThe lead is Eka Robotics: a hundred and fifty million dollars at a one point four five billion valuation, for a model that leans on touch and force rather than just vision. Their gripper senses contact and the model was trained mostly in simulation. For your side of things, the takeaway is that force is becoming a first-class input, and in printing that's pump pressure and contact, the signals a camera misses.\n\nSecond, TU Braunschweig built rammed-earth walls with a robot that compacts loose earth voxel by voxel, no binder and no formwork. Their walls ended up off by up to fifteen centimetres in height, which is exactly the kind of error a vision checker could catch.\n\nThird, a solid review on weak layer interfaces in printed concrete. The short version: the time between layers creates mismatched states, and that drives cracks and anisotropy. That timing is the knob a closed-loop controller can actually turn.\n\nThree more below, including a Michigan digital-twin project that's very close to what you're building.",
+ "items": [
+  {
+   "topic": "ai",
+   "title": "Eka Robotics raises $150M for a robot model that learns by touch, not just sight",
+   "source": "TechCrunch",
+   "published": "Oct 20, 2026",
+   "url": "https://techcrunch.com/2026/10/20/eka-is-worth-1-45-billion-thanks-to-a-physical-ai-model-that-has-experts-raving/",
+   "imageUrl": "https://techcrunch.com/wp-content/uploads/2026/10/Screenshot-2026-10-19-at-1.21.23-PM.png?resize=1200,974",
+   "summary": "Founded by MIT's Pulkit Agrawal and ex-DeepMind researcher Tuomas Haarnoja, Eka builds a vision-force-action model trained mostly in simulation, paired with a force-sensing gripper. a16z and F-Prime led the round at a $1.45 billion valuation.",
+   "why": "Force feedback as a first-class input is what extrusion control needs too: pump pressure and contact force tell you things the camera cannot.",
+   "id": "2026-10-21-01"
+  },
+  {
+   "topic": "printing",
+   "title": "Discrete selective robotic rammed earth: formwork-free, binder-free earth walls",
+   "source": "Construction Robotics (Springer) · Mehdizadeh, Gosslar, Khader, Kloft, Hack (TU Braunschweig)",
+   "published": "Jul 23, 2026",
+   "url": "https://link.springer.com/article/10.1007/s41693-026-00212-1",
+   "imageUrl": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs41693-026-00212-1/MediaObjects/41693_2026_212_Fig1_HTML.jpg",
+   "summary": "A robot with an L-shaped blade mould and rammer compacts loose earth voxel by voxel, with paths generated from a discrete model of the geometry. Three demonstrators up to 1.2 m tall deviated from target height by roughly −2 to +15 cm.",
+   "why": "A non-extrusion robotic earth process whose geometric deviations are exactly the kind of error a camera-based checker could catch and correct.",
+   "id": "2026-10-21-02"
+  },
+  {
+   "topic": "printing",
+   "title": "Weak interlayer interfaces in 3D-printed concrete: mechanisms, consequences and control strategies",
+   "source": "Coatings (MDPI), review · Zhang, Liu, Duan et al.",
+   "published": "May 31, 2026",
+   "url": "https://www.mdpi.com/2079-6412/16/6/660",
+   "imageUrl": "https://pub.mdpi-res.com/coatings/coatings-16-00660/article_deploy/html/images/coatings-16-00660-g001.png?1780219694",
+   "summary": "The review traces weak interfaces to mismatched states between successive layers, which create pores and local softening that drive cracking, anisotropy and durability loss. It calls for standard tests, transferable interface descriptors and real-time quality control.",
+   "why": "Interlayer timing is the variable a closed-loop print controller can actually adjust, so this is the theory behind what your system would act on.",
+   "id": "2026-10-21-03"
+  },
+  {
+   "topic": "monitoring",
+   "title": "Michigan builds an AI digital twin to catch drift and defects during concrete printing",
+   "source": "Michigan Robotics · Yulun Tian, Jiaqi Li (University of Michigan)",
+   "published": "Feb 20, 2026",
+   "url": "https://robotics.umich.edu/news/2026/using-ai-to-improve-3d-printing-concrete/",
+   "imageUrl": "https://robotics.umich.edu/_generated-og/2026-using-ai-to-improve-3d-printing-concrete.png",
+   "summary": "A new seed-funded project fuses 3D vision, mapping and physics-informed machine learning from onboard sensors and mobile monitoring robots into a predictive twin of the print. The goal is to detect geometric drift and material inconsistencies early and correct them.",
+   "why": "Very close to your direction; worth following, and a group to compare notes with on deformation prediction.",
+   "id": "2026-10-21-04"
+  },
+  {
+   "topic": "printing",
+   "title": "Robotic additive repair of damaged rammed-earth walls with printable earth",
+   "source": "Research Square preprint, under review · Chao, Feng, Han, Wang, Bao et al.",
+   "published": "Aug 24, 2026",
+   "url": "https://www.researchsquare.com/article/rs-10650180/v1",
+   "summary": "A mobile six-axis robot printed a cement-free earthen repair onto a damaged rammed-earth wall. Repaired specimens reached about 56% of a new wall's peak load, with damage mostly in the printed layer and no major interface failure.",
+   "why": "Printing onto an existing, irregular earth surface needs exactly the scan-then-adapt toolpath logic your vision work could provide.",
+   "id": "2026-10-21-05"
+  },
+  {
+   "topic": "ai",
+   "title": "Nature Will releases Natura-1, a 50B-parameter model for dexterous robot hands",
+   "source": "Forbes",
+   "published": "Oct 13, 2026",
+   "url": "https://www.forbes.com/sites/johnkoetsier/2026/10/13/startup-releases-50-billion-parameter-physical-general-foundation-model-for-instant-robot-intelligence/",
+   "imageUrl": "https://imageio.forbes.com/specials-images/imageserve/6acdea834b9ba98b707764d0/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
+   "summary": "The mixture-of-experts model was trained on over a million hours of first-person human video plus language, images and action data, and runs a 100 ms control loop. Speed and precision claims have not yet been independently tested.",
+   "why": "One more sign of how fast physical-AI models are scaling; for now more relevant to manipulation than to precise toolpaths.",
+   "id": "2026-10-21-06"
+  }
+ ]
+}
