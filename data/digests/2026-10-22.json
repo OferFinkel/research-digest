@@ -1,0 +1,53 @@
+{
+ "id": "2026-10-22",
+ "date": "2026-10-22",
+ "edition": 1,
+ "generatedAt": "2026-10-22T07:05:00+03:00",
+ "note": "Little new research today; one item is from late 2025 and shows its original date.",
+ "briefing": "Morning Ofer. Quiet research day, four stories plus a date for your calendar.\n\nThe lead is NVIDIA's GTC in Berlin. They opened early access to a factory blueprint with ready-made agents for visual inspection and root-cause analysis, and released new Cosmos world models. Siemens is already using it for circuit-board inspection and expects to cut most of the manual setup work. These are the building blocks you'd otherwise hand-roll for print monitoring.\n\nSecond, a Politecnico di Milano model that predicts the cross-section of a printed concrete layer from the mix and print settings. It's from last year, but it's exactly the 'what should this layer look like' reference you'd compare your camera against.\n\nThird, a fun one for the low-cost angle: a six-axis clay printer built mostly from printed parts, for under a thousand dollars. Twenty-one of twenty-three prints worked.\n\nAlso, Formnext in Frankfurt is November seventeenth to twentieth, now on the events list.",
+ "items": [
+  {
+   "topic": "ai",
+   "title": "NVIDIA GTC Berlin: factory agents, Cosmos 3.5 world models and a Siemens inspection showcase",
+   "source": "NVIDIA blog (GTC Berlin live updates)",
+   "published": "Oct 19–21, 2026",
+   "url": "https://blogs.nvidia.com/gtc-berlin-2026-news/",
+   "imageUrl": "https://blogs.nvidia.com/wp-content/uploads/2026/10/PHOTO-2026-10-21-07-35-38.jpg",
+   "summary": "NVIDIA put its Factory Operations Blueprint, with agents for visual inspection and root-cause analysis, into early access and released Cosmos 3.5 world models. At Siemens' Erlangen plant, Cosmos-based inspection aims to cut manual engineering for inspection programs by up to 85%.",
+   "why": "Off-the-shelf inspection agents and world models are the pieces you would otherwise build by hand for print monitoring and simulation.",
+   "id": "2026-10-22-01"
+  },
+  {
+   "topic": "monitoring",
+   "title": "ShapeGen3DCP: a deep learning model that predicts the cross-section of printed concrete layers",
+   "source": "arXiv · Rizzieri, Lanteri, Ferrara, Cremonesi (Politecnico di Milano)",
+   "published": "Oct 2025",
+   "url": "https://arxiv.org/abs/2510.02009",
+   "summary": "A neural network predicts a filament's cross-sectional shape from material properties and print settings, describing it compactly with Fourier descriptors. It is trained on particle finite element simulations and agrees well with experimental measurements from other groups.",
+   "why": "A predicted 'expected shape' to compare against what your camera sees, so deviations become a measurable signal for control.",
+   "id": "2026-10-22-02"
+  },
+  {
+   "topic": "printing",
+   "title": "A six-axis clay-printing robot for under $1,000, built mostly from 3D-printed parts",
+   "source": "AI, Computer Science and Robotics Technology (IntechOpen) · Čabaravdić, Sarajlić",
+   "published": "Apr 2026",
+   "url": "https://www.intechopen.com/journals/1/articles/853",
+   "imageUrl": "https://cdnintech.com/articles/853/1775712141-1412276102/acrt-5-acrt20250181-r1-g001.jpg",
+   "summary": "The authors built a low-cost six-axis arm and software that turns STL files into clay toolpaths. Twenty-one of 23 test prints succeeded, with failures traced to material handling rather than the robot.",
+   "why": "Fits the low-cost, accessible end of your vision: cheap non-planar clay printing for teaching rigs or field trials.",
+   "id": "2026-10-22-03"
+  },
+  {
+   "topic": "monitoring",
+   "title": "Artec Twins turns drone, phone and scanner data into measurable digital twins of construction sites",
+   "source": "3DPrint.com news briefs · Artec 3D",
+   "published": "Oct 21, 2026",
+   "url": "https://3dprint.com/335333/3d-printing-news-briefs-10-21-2026/",
+   "imageUrl": "https://3dprint.com/wp-content/uploads/2026/10/Screenshot-2026-10-20-at-6.22.05-PM.png",
+   "summary": "New software from Artec 3D processes billion-point datasets from drones, smartphones, scanners and satellites into measurable meshes, point clouds and Gaussian splats. It targets large environments such as cities, heritage sites and construction sites.",
+   "why": "A practical way to capture as-built printed vaults at full scale for comparison with the design and your deformation predictions.",
+   "id": "2026-10-22-04"
+  }
+ ]
+}

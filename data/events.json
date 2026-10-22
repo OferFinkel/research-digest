@@ -60,7 +60,17 @@
    "start": "2027-09-26",
    "title": "IROS 2027",
    "url": "https://www.beri.net/events/iros-2027"
+  },
+  {
+   "title": "Formnext 2026",
+   "kind": "attend",
+   "start": "2026-11-17",
+   "end": "2026-11-20",
+   "dates": "17–20 Nov 2026",
+   "location": "Frankfurt, Germany",
+   "url": "https://formnext.mesago.com/frankfurt/en/industry-insights/architecture-construction.html",
+   "note": "Largest additive manufacturing fair; has an architecture and construction track."
   }
  ],
- "updatedAt": "2026-10-16"
+ "updatedAt": "2026-10-22"
 }
