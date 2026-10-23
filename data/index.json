@@ -1,5 +1,13 @@
 [
  {
+  "id": "2026-10-23",
+  "date": "2026-10-23",
+  "edition": 1,
+  "generatedAt": "2026-10-23T07:10:00+03:00",
+  "count": 3,
+  "headline": "NVIDIA expands Isaac for industrial robots: Isaac Lab 3.0, an open runtime and a 2,000-asset sim library"
+ },
+ {
   "id": "2026-10-22",
   "date": "2026-10-22",
   "edition": 1,

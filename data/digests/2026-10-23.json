@@ -1,0 +1,43 @@
+{
+ "id": "2026-10-23",
+ "date": "2026-10-23",
+ "edition": 1,
+ "generatedAt": "2026-10-23T07:10:00+03:00",
+ "note": "A very quiet news day for construction printing; three stories instead of the usual five or more.",
+ "briefing": "Morning Ofer. Very quiet day for construction printing, so just three stories, all worth a look.\n\nFirst, NVIDIA's GTC Berlin follow-up: Isaac Lab 3.0 is now generally available, along with an open-source robot runtime and a big simulation asset library. The part that matters for you: KUKA is already using pieces of it, so training control in simulation for your Iontec arm is getting more realistic.\n\nSecond, Robotiq launched a gripper with built-in touch sensing and onboard AI that detects slip and grasp quality right at the wrist. It's the standard gripper on UR arms, and you can retrofit the sensors onto the old one.\n\nThird, an Oregon State model for printed earth. It ties soil suction during drying to strength, and predicts how many layers a clay-sand mix can stack before it slumps. More time between layers helped, humidity hurt. It's the same layer-timing knob, but for earth.",
+ "items": [
+  {
+   "topic": "ai",
+   "title": "NVIDIA expands Isaac for industrial robots: Isaac Lab 3.0, an open runtime and a 2,000-asset sim library",
+   "source": "The AI Insider",
+   "published": "Oct 22, 2026",
+   "url": "https://theaiinsider.tech/2026/10/22/nvidia-expands-physical-ai-stack-across-robotics-humanoids-and-factory-automation/",
+   "imageUrl": "https://theaiinsider.tech/wp-content/uploads/2026/10/nvidia-isaac-platform-1-1024x576.jpeg",
+   "summary": "At GTC Berlin NVIDIA made Isaac Lab 3.0 generally available and released Isaac OS, an open-source robot runtime, plus a simulation asset library and a large human-motion dataset. ABB Robotics and KUKA are among the companies already using parts of the stack.",
+   "why": "KUKA adopting this stack makes simulation-trained control on your Iontec arm a more realistic path than it was a year ago.",
+   "id": "2026-10-23-01"
+  },
+  {
+   "topic": "ai",
+   "title": "Robotiq's 2FC gripper adds tactile sensing and onboard AI to the standard UR-world gripper",
+   "source": "Robotics & Automation News",
+   "published": "Oct 22, 2026",
+   "url": "https://roboticsandautomationnews.com/2026/10/22/robotiq-launches-the-2fc-physical-ai-gripper/106191/",
+   "imageUrl": "https://roboticsandautomationnews.com/wp-content/uploads/2026/10/robotiq-2fc-gripper-1.png",
+   "summary": "The gripper records pressure, vibration, force and slip in millisecond sync and runs grasp-quality and slip-detection software at the wrist. Existing 2F owners can retrofit the sensors; shipping starts in early 2027.",
+   "why": "A ready-made way to log labelled contact data on a UR arm, useful if you add handling or placement steps around printing.",
+   "id": "2026-10-23-02"
+  },
+  {
+   "topic": "printing",
+   "title": "A soil-suction framework predicts buildability and strength of 3D-printed earth",
+   "source": "Materials and Structures (Springer) · Akula, Ray, Bastola, Masoomi, Che et al. (Oregon State, ERDC)",
+   "published": "Apr 1, 2026",
+   "url": "https://link.springer.com/article/10.1617/s11527-026-03067-8",
+   "imageUrl": "https://media.springernature.com/m312/springer-static/image/art%3A10.1617%2Fs11527-026-03067-8/MediaObjects/11527_2026_3067_Fig1_HTML.png",
+   "summary": "The model links suction during drying to shear strength, and predicted how many layers clay-sand mixes could stack before collapse. Longer gaps between layers helped, higher humidity hurt, and suction carried most of the strength after a week.",
+   "why": "A physical model of how drying sets buildability, the same time-between-layers variable your controller could tune on earth vaults.",
+   "id": "2026-10-23-03"
+  }
+ ]
+}
